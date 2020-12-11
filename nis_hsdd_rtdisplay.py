@@ -110,60 +110,6 @@ class zmqrecvthread_02(QtCore.QThread):
         print('we have stop the thread in stop')
 
 
-# 引出电源数据接收
-class zmqrecvthread_11(QtCore.QThread):
-    trigger=QtCore.pyqtSignal()
-
-    def __init__(self):
-        super().__init__()
-        self.context=zmq.Context()
-        self.zmqsub=self.context.socket(zmq.SUB)
-        self.zmqsub.setsockopt(zmq.SUBSCRIBE,b'')
-        # self.subaddr='tcp://192.168.127.200:10011'
-        self.subaddr='tcp://192.168.127.201:5011'
-        # self.subaddr='inproc://iiii'
-        print('in the thread init')
-        self.zmqsub.connect(self.subaddr)
-        self.flag=0
-        # # Initialize poll set
-        # self.poller = zmq.Poller()
-        # self.poller.register(self.zmqsub,zmq.POLLIN)
-
-    def run(self):
-        global  data_pgpower,data_receive_flag_11
-        global pic2
-        print('we are running ')
-        print(self.subaddr)
-        self.flag=1
-        i=1
-        counter=0
-        while True:
-            if data_receive_flag_11:
-                try:
-                    # b = self.zmqsub.recv(zmq.DONTWAIT)
-                    b = self.zmqsub.recv()
-                    # print('recbeiving b',b)
-                    counter+=1
-                    # print('num',counter,'content:',struct.unpack('!f',b[0:4]))
-                    for i in range(10):
-                        tmpb = b[i * 36:(i + 1) * 36]
-                        tmpby = tmpb[4:8]
-                        tmpbx = tmpb[10:36]
-
-                        try:
-                            xmin = int(tmpbx[-12:-10].decode())
-                            xs = float(tmpbx[-9:].decode())
-                            x = xmin*60+xs
-                            y = struct.unpack('!f', tmpby)[0]
-                            data_pgpowerx.append(x)
-                            data_pgpowery.append(y)
-                        except:
-                            print('time sample error')
-                except zmq.Again:
-                    print('TO recv again')
-                    pass
-
-
 class Savingrecvthread(QtCore.QThread):
     trigger1=QtCore.pyqtSignal()
 
@@ -251,7 +197,11 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.pushButton_6.clicked.connect(self.exportdataup)
         self.pushButton_7.clicked.connect(self.exportdatadown)
         self.pushButton_9.clicked.connect(self.exportfig)
-
+        # 加速电源
+        self.pushButton_5.clicked.connect(self.clearData_pgpower)
+        self.pushButton_6.clicked.connect(self.exportdataup)
+        self.pushButton_7.clicked.connect(self.exportdatadown)
+        self.pushButton_9.clicked.connect(self.exportfig)
 
     def figure_init(self):
         #初始化 所有的figure
@@ -825,25 +775,25 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                     # print("data:",data,"x:",x)
                     # 这个地方完全可以选择二维数据
                     if channel_id == 1:
-                        # self.egpower1_x.append(x)
+                        self.egpower1_x.append(x)
                         if(data>6 or data<-6):
                             continue
                         else:
                             self.egpower1_y.append(data)
 
                     elif channel_id == 2:
-                        # self.egpower2_x.append(x)
+                        self.egpower2_x.append(x)
                         if (data > 6 or data < -6):
                             continue
                         else:
                             self.egpower2_y.append(data)
                 print('sub egpower')
     def dis_egpower(self):
-        # self.curve_egpower1.setData(x=self.egpower1_x,y= self.egpower1_y)
-        self.curve_egpower1.setData( y=self.egpower1_y)
+        self.curve_egpower1.setData(x=self.egpower1_x,y= self.egpower1_y)
+        # self.curve_egpower1.setData( y=self.egpower1_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-        # self.curve_egpower2.setData(x=self.egpower2_x,y= self.egpower2_y)
-        self.curve_egpower2.setData(y=self.egpower2_y)
+        self.curve_egpower2.setData(x=self.egpower2_x,y= self.egpower2_y)
+        # self.curve_egpower2.setData(y=self.egpower2_y)
         print('dis egpower')
 
 
@@ -1004,86 +954,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         y = np.around(np.where(x >= start + zhouqi / 2, start + zhouqi - x, x - start), decimals=ydecimals) - 1
 
         return x, y
-
-    def update_02(self):
-        # global data3, ptr3, ptrtmp
-        # data3[ptr3] = np.random.normal()
-        self.data3[self.ptr3] = self.triy[self.ptrtmp]
-        # self.p3.clear()
-        if self.ptr3>1000:
-            datatmp1=self.data3[self.ptr3-1000:self.ptr3-1] # 显示最新的10000个数据
-
-        self.ptrtmp += 1
-        if self.ptrtmp == 99:
-            self.ptrtmp = 0
-        self.ptr3 += 1
-        if self.ptr3 >= self.data3.shape[0]:
-            tmp = self.data3
-            self.data3 = np.empty(self.data3.shape[0] * 2)
-            self.data3[:tmp.shape[0]] = tmp
-        if self.ptr3>1001:
-            self.curve.setData(datatmp1)
-        else:
-            self.curve.setData(self.data3[:self.ptr3])
-        # self.p.setRange(xRange=[self.ptr3-50, self.ptr3+50])
-
-        # self.curve.setPos(self.ptr3-1000,0)
-        # print('can we in here  after 他和cureset')
-        listx = []
-        for i in range(self.ptr3):
-            listx.append(i+10)
-        self.curve2.setData(x=listx,y=self.data3[:self.ptr3])
-        # self.curve2sub.setData(self.data3[:self.ptr3]+1)
-        # self.scatter.setData(y=self.data3[:self.ptr3],)
-    def update_11(self):
-        # global data3, ptr3, ptrtmp
-        # data3[ptr3] = np.random.normal()
-        self.data3[self.ptr3] = self.triy[self.ptrtmp]
-        # self.p3.clear()
-        if self.ptr3>1000:
-            datatmp1=self.data3[self.ptr3-1000:self.ptr3-1] # 显示最新的10000个数据
-
-        self.ptrtmp += 1
-        if self.ptrtmp == 99:
-            self.ptrtmp = 0
-        self.ptr3 += 1
-        if self.ptr3 >= self.data3.shape[0]:
-            tmp = self.data3
-            self.data3 = np.empty(self.data3.shape[0] * 2)
-            self.data3[:tmp.shape[0]] = tmp
-        if self.ptr3>1001:
-            self.curve.setData(datatmp1)
-        else:
-            self.curve.setData(self.data3[:self.ptr3])
-        # self.p.setRange(xRange=[self.ptr3-50, self.ptr3+50])
-
-        # self.curve.setPos(self.ptr3-1000,0)
-        # print('can we in here  after 他和cureset')
-        listx = []
-        for i in range(self.ptr3):
-            listx.append(i+10)
-        self.curve2.setData(x=listx,y=self.data3[:self.ptr3])
-        # self.curve2sub.setData(self.data3[:self.ptr3]+1)
-        # self.scatter.setData(y=self.data3[:self.ptr3],)
-
-    def update2(self):
-        global  data_pgpowerx,data_pgpowery
-        datatmp1x=data_pgpowerx[len(data_pgpowerx)-10000:len(data_pgpowerx)-1] # 显示最新的10000个数据
-        datatmp1y = data_pgpowery[len(data_pgpowerx) - 10000:len(data_pgpowerx) - 1]
-        app.processEvents()
-        # print('we are in update2')
-        self.curve.setData(x=datatmp1x,y=datatmp1y)
-        self.curve.setPos(len(data_pgpowerx)-10000,0)
-        app.processEvents() #这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-        # 另外一种告诉的方案，就是额外的启动两个线程， 干脆就不在当前的线程上进行数据展示，就单独额外的线程进行绘图就好了
-
-
-        self.curve2.setData(data_pgpowery)
-        app.processEvents() #这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-
-        # self.curve2.setData(data_pgpowery)
-
-
 
     def startRecving_02(self):
         global data_receive_flag_02

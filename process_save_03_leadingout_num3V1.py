@@ -69,18 +69,18 @@ def process_threadfunc(context):
 
     counter= 0
     global flagtoreceive
-    # db = pymysql.connect(host='192.168.100.97', user='scottar', password='wangsai', db='nis_hsdd', port=3306, charset='utf8')
-    # cur = db.cursor()
+    db = pymysql.connect(host='192.168.100.78', user='scottar', password='123456', db='nis_hsdd', port=3306, charset='utf8')
+    cur = db.cursor()
 
     flagtoreceive = True
     while True:
         # time.sleep(1)
         if flagtoreceive:
-            # try:
+            try:
                 b = receiver_sub.recv()
                 counter += 1
                 print("Counter num:",counter)
-                print('msg',b)
+                # print('msg',b)
 
                 if counter ==1:
                     startperf=time.perf_counter()
@@ -101,38 +101,42 @@ def process_threadfunc(context):
                 fenmiaofu =struct.unpack('!B', b[3:4])[0]                 #1
                 sec=struct.unpack('!I', b[4:8])[0]              # 4
                 print('channel id',channel_id,'length',length,'fenmiaoshu ',fenmiaofu,'sestc:',sec)
+                # if channel_id ==2:
+                #     continue
                 #
-                # for i in range(length-1):
-                #     tmp=b[10+i*8:10+8*(i+1)]
-                #     # print(tmp)
-                #     data = struct.unpack('!f',tmp[0:4])[0]
-                #     ustampe = struct.unpack('!I',tmp[4:8])[0]
-                #     # print('data',data,'us',ustampe)
-                #     # try:
-                #     if True:
-                #         second=sec%60
-                #         minute = (sec//60)%60
-                #         hour = (sec//60)//60
-                #         ustampe = ustampe/1000000
-                #
-                #         # print('hour',hour,'min',minute,'second',second,'usstap,',ustampe)
-                #         # print('datayms',dateymd)
-                #         # print('type.',type(dateymd))
-                #         data_time = dateymd + ' '+str(hour)+':'+str(minute)+':'+str(second+ustampe)
-                #         print(data_time)
-                #         # sql = "INSERT INTO v_data_monitor (subsys_id,register_id,exp_id,v_data,v_data_time) values (%d,%d,%d,%f,str_to_date('\%s\','%%Y-%%m-%%d %%H:%%i:%%s.%%f'))" % (
-                #         # subsys_id, register_id, exp_id, v_data, str(data_time, encoding='utf-8'))
-                #         sql = "INSERT INTO v_data_monitor (subsys_id,register_id,exp_id,v_data,v_data_time) values (%d,%d,%d,%f,str_to_date('\%s\','%%Y-%%m-%%d %%H:%%i:%%s.%%f'))" % (3, channel_id, 1, data, data_time)
-                #         #
-                #         #
-                #         cur.execute(sql)
-                #         # db.commit()
-                #     # except:
-                #     #     print('date time error ')
+                for i in range(length):
+                    tmp=b[8+i*8:10+8*(i+1)]
+                    # print(tmp)
+                    data = struct.unpack('!f',tmp[0:4])[0]
+                    ustampe = struct.unpack('!I',tmp[4:8])[0]
+                    # print('data',data,'us',ustampe)
+                    # try:
+                    if True:
+                        second=sec%60
+                        minute = (sec//60)%60
+                        hour = (sec//60)//60
+                        ustampe = ustampe/1000000
+
+                        # print('hour',hour,'min',minute,'second',second,'usstap,',ustampe)
+
+                        # print('datayms',dateymd)
+                        # print('type.',type(dateymd))
+                        data_time = dateymd + ' '+str(hour)+':'+str(minute)+':'+str(round(second+ustampe,6))
+                        print("i",i,data_time,"  data: ",data)
+                        # sql = "INSERT INTO v_data_monitor (subsys_id,register_id,exp_id,v_data,v_data_time) values (%d,%d,%d,%f,str_to_date('\%s\','%%Y-%%m-%%d %%H:%%i:%%s.%%f'))" % (
+                        # subsys_id, register_id, exp_id, v_data, str(data_time, encoding='utf-8'))
+                        sql = "INSERT INTO v_data_monitor (subsys_id,register_id,exp_id,v_data,v_data_time) values (%d,%d,%d,%f,str_to_date('\%s\','%%Y-%%m-%%d %%H:%%i:%%s.%%f'))" % (3, channel_id, 1, data, data_time)
+                        #
+                        #
+                        cur.execute(sql)
+                        db.commit()
+                    #
+                    # except:
+                    #     print('date time error ')
 
 
-            # except:
-                # db.commit()
+            except:
+                db.commit()
 
                 # print('Timeout in receiver')
 #
