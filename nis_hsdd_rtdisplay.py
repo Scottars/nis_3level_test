@@ -416,7 +416,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         self.p_gassupply1.setBackground('w')
         self.p_gassupply2.setBackground('w')
-        self.p_gassupply3.setBackground('w')
 
         self.p_rfpower1.setBackground('w')
         self.p_rfpower2.setBackground('w')
@@ -543,9 +542,13 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.timer_pgpower.timeout.connect(self.dis_pgpower)
         self.timer_pgpower.start(1000)
 
-        self.flag_pgpower = True
-        self.sub_pgpower_thread = threading.Thread(target=self.sub_pgpower)
-        self.sub_pgpower_thread.start()
+        self.flag_pgpowerhs1_1 = True
+        self.sub_pgpowerhs1_1_thread = threading.Thread(target=self.sub_pgpowerhs1_1)
+        self.sub_pgpowerhs1_1_thread.start()
+
+        self.flag_pgpowerhs3_6 = True
+        self.sub_pgpowerhs3_6_thread = threading.Thread(target=self.sub_pgpowerhs3_6)
+        self.sub_pgpowerhs3_6_thread.start()
 
     def start_egpower(self):
         print("start egpower")
@@ -596,9 +599,11 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
     def stop_pgpower(self):
         print('stop pgpower ')
 
-        self.flag_pgpower = False
+        self.flag_pgpowerhs1_1 = False
+        self.flag_pgpowerhs3_6 = False
         time.sleep(1)
-        stop_thread(self.sub_pgpower_thread)
+        stop_thread(self.sub_pgpowerhs1_1_thread)
+        stop_thread(self.sub_pgpowerhs3_6_thread)
         self.timer_pgpower.stop()
     def stop_egpower(self):
         print('stop egpower ')
@@ -732,8 +737,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
         self.curve_gassupply2.setData(x=self.gassupply2_x,y=self.gassupply2_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-        self.curve_gassupply3.setData(x=self.gassupply3_x,y=self.gassupply3_y)
-        app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
 
         print('dis gassupply ')
     def sub_rfpower(self):
@@ -783,12 +786,13 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.curve_rfpower2.setData(y= self.pgpower2_y)
 
         print('dis pgpower')
-    def sub_pgpower(self):
+
+    def sub_pgpowerhs1_1(self):
         context = zmq.Context()
         zmqsub = context.socket(zmq.SUB)
         zmqsub.setsockopt(zmq.SUBSCRIBE, b'')
         # self.subaddr='tcp://192.168.127.200:10011'
-        subaddr = nis_hsdd_configfile.level_2_07_pgpower_sub_addr
+        subaddr = nis_hsdd_configfile.hs1_sub_addr
         zmqsub.setsockopt(zmq.RCVTIMEO, 500)
         # self.subaddr='inproc://iiii'
         # print('in the thread init')
@@ -802,7 +806,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 except:
                     continue
                 ####
-                print('in pgpower', 'b', b)
                 channel_id = int(b[0:1].decode())
                 length = struct.unpack('!I', b[1:5])[0]
                 fenmiaohao = int(b[0:1].decode())
@@ -818,10 +821,44 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                     if channel_id == 1:
                         self.pgpower1_x.append(x)
                         self.pgpower1_y.append(data)
-                    elif channel_id == 6:
+                print('sub pgpower channel id 1：',len(self.pgpower1_x))
+
+    def sub_pgpowerhs3_6(self):
+        context = zmq.Context()
+        zmqsub = context.socket(zmq.SUB)
+        zmqsub.setsockopt(zmq.SUBSCRIBE, b'')
+        # self.subaddr='tcp://192.168.127.200:10011'
+        subaddr = nis_hsdd_configfile.hs3_sub_addr
+        zmqsub.setsockopt(zmq.RCVTIMEO, 500)
+        # self.subaddr='inproc://iiii'
+        # print('in the thread init')
+        self.flag_pgpower = True
+
+        zmqsub.connect(subaddr)
+        while True:
+            if self.flag_pgpower:
+                try:
+                    b = zmqsub.recv()
+                except:
+                    continue
+                ####
+                channel_id = int(b[0:1].decode())
+                length = struct.unpack('!I', b[1:5])[0]
+                fenmiaohao = int(b[0:1].decode())
+                sec = struct.unpack('!I', b[6:10])[0]
+                # print('length:',length)
+
+                for i in range(length):
+                    tmp = b[10 + i * 8:10 + (i + 1) * 8]
+                    data = struct.unpack('!f', tmp[0:4])[0]
+                    us_stampe = struct.unpack('!I', tmp[4:8])[0]
+                    x = round(sec + us_stampe / 1000000, 6)
+                    # 这个地方完全可以选择二维数据
+                    if channel_id == 6:
                         self.pgpower2_x.append(x)
                         self.pgpower2_y.append(data)
-                print('sub pgpower',len(self.pgpower1_x))
+                print('sub pgpower-channel id 6 ：', len(self.pgpower1_x))
+
     def dis_pgpower(self):
         # self.curve_pgpower1.setData(x=self.pgpower1_x,y= self.pgpower1_y)
         self.curve_pgpower1.setData(y= self.pgpower1_y)
@@ -1000,6 +1037,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         if currenttab == 0:
                 self.start_gassupply()
+
         elif currenttab == 1:
                 self.start_rfpower()
         elif currenttab == 2:
@@ -1009,6 +1047,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         else:
             print("Not developped yet")
 
+        self.lasttabWidget = currenttab
     def triangle_wave(self,start, zhouqi, midu, xdecimals, ydecimals):
         '''
 
