@@ -107,5 +107,7 @@ hs5_udp_recv_port = 5004
 
 
 
+Hs_TimeInterval = 1
+
 
 level_3_para_read_req_addr  = 'tcp://192.168.100.99:10011'

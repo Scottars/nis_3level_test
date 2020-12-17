@@ -90,8 +90,8 @@ def level1_udp_send():
 
     from waveproduce import sin_wave,triangle_wave
 
-    xsin, ysin = sin_wave(start=0, zhouqi=6.28, midu=0.01, xdecimals=2, ydecimals=2)
-    xtriangle, ytriangle = sin_wave(start=0, zhouqi=6.28, midu=0.01, xdecimals=2, ydecimals=2)
+    xsin, ysin = sin_wave(start=0, zhouqi=6.28, midu=0.0628, xdecimals=2, ydecimals=2)
+    xtriangle, ytriangle = triangle_wave(start=0, zhouqi=6.28, midu=0.0628, xdecimals=2, ydecimals=2)
     datax = 0
 
     wholemsg_list1 = []
@@ -100,10 +100,10 @@ def level1_udp_send():
     data1=0
     data2=0
     start_time = time.perf_counter()
-    Time_interal = 0.1
+    Time_interal = 1
     Time_last = 10
 
-    for i in range(100):
+    for i in range(10000):
 
 
         msg1 = b''
@@ -138,7 +138,8 @@ def level1_udp_send():
         电源电流采样 value1:10 03 08 04  data crc1  crc2  ----registerid=08   datatype=float
         '''
         # msg = sec+channels+channel_data_cnt+struct.pack('!f',data)+us_stampe
-        high_pricision_delay(Time_interal)
+        # high_pricision_delay(Time_interal)
+        time.sleep(Time_interal)
 
         client_socket.sendto(msg1, (nis_hsdd_configfile.hs1_udp_recv_addr,nis_hsdd_configfile.hs1_udp_recv_port))
         client_socket.sendto(msg2, (nis_hsdd_configfile.hs1_udp_recv_addr,nis_hsdd_configfile.hs1_udp_recv_port))
