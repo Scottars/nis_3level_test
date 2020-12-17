@@ -59,7 +59,7 @@ flagtoreceive= False
 dateymd = time.strftime("%Y-%m-%d",time.localtime())
 
 def process_threadfunc(context):
-    receiver_subaddr= nis_hsdd_configfile.level_2_08_egpower_sub_addr
+    receiver_subaddr= nis_hsdd_configfile.hs5_sub_addr
     receiver_sub = context.socket(zmq.SUB)
     receiver_sub.setsockopt(zmq.SUBSCRIBE,b'')  # 这个时候，这个地方订阅的内容是对应的是系统的哪个 具体的chaannel id
 
@@ -116,6 +116,7 @@ def process_threadfunc(context):
                         minute = (sec//60)%60
                         hour = (sec//60)//60
                         ustampe = ustampe/1000000
+
 
                         # print('hour',hour,'min',minute,'second',second,'usstap,',ustampe)
 

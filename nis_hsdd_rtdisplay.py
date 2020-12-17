@@ -213,49 +213,30 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.setWindowTitle("Real Time Display GUI")
         self.setMinimumSize(0,0)
 
-        self.data3 = np.empty(100)
-        self.ptr3 = 0
-        self.ptrtmp = 0
-        self.trix, self.triy = self.triangle_wave(0, 1, 0.01, 2, 2)
+
 
         print('we are in init')
 
-        # self.pushButton.clicked.connect(self.start_11)
-        # self.pushButton_2.clicked.connect(self.stop_11)
-        # self.pushButton_3.clicked.connect(self.startRecving)
-        # self.pushButton_4.clicked.connect(self.stopRecving)
-        self.pushButton_5.clicked.connect(self.clearData)
-        self.pushButton_6.clicked.connect(self.exportdataup)
-        self.pushButton_7.clicked.connect(self.exportdatadown)
-        self.pushButton_9.clicked.connect(self.exportfig)
+
 
         self.tabWidget.setCurrentIndex(0)
         self.lasttabWidget = 0
         self.tabWidget.currentChanged.connect(self.tabchange)
 
 
+
         self.figure_init()
+        self.button_init()
         self.start_gassupply()
         # self.start_water()
     def button_init(self):
-        #水冷
-        self.pushButton_17.clicked.connect(self.clearData_water)
+        self.pushButton_58.clicked.connect(self.SetDataDensity)
+        self.pushButton_48.clicked.connect(self.StartUpdate)
+        self.pushButton_43.clicked.connect(self.StopUpdate)
+        self.pushButton_49.clicked.connect(self.ClearUpdate)
+        self.pushButton_47.clicked.connect(self.ExportData)
+        self.pushButton_46.clicked.connect(self.ExportFigure)
 
-
-        #供气
-        self.pushButton_33.clicked.connect(self.clearData_gassupply)
-
-
-        #rf power
-
-        self.pushButton_49.clicked.connect(self.clearData_rfpower)
-
-
-        #引出电源
-        self.pushButton_5.clicked.connect(self.clearData_pgpower)
-        self.pushButton_6.clicked.connect(self.exportdataup)
-        self.pushButton_7.clicked.connect(self.exportdatadown)
-        self.pushButton_9.clicked.connect(self.exportfig)
 
 
     def figure_init(self):
@@ -440,7 +421,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.curve_water7 = self.p_water7.plot(pen=pg.mkPen(color=(0, 0, 0),width=5))
         self.curve_water8 = self.p_water8.plot(pen=pg.mkPen(color=(0, 0, 0),width=5))
 
-        self.curve_gassupply1 = self.p_gassupply1.plot(pen=(0, 0, 0))
+        self.curve_gassupply1 = self.p_gassupply1.plot(symbol='o',symbolSize=4)
         self.curve_gassupply2 = self.p_gassupply2.plot(pen=(0, 0, 0))
 
         self.curve_rfpower1 = self.p_rfpower1.plot(pen=(0, 0, 0))
@@ -503,9 +484,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.flag_pgpower = True
         self.flag_egpower = True
 
-        # self.data3=self.triy
-        self.trix, self.triy = self.triangle_wave(0, 1, 0.01, 2, 2)
-        # self.scatter = self.p3.plot(pen=(0,0,0), symbol='o')
     def start_water(self):
         print('start water')
         self.timer_water = QtCore.QTimer()
@@ -617,9 +595,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         stop_thread(self.sub_egpowerhs3_5_thread)
         self.timer_egpower.stop()
 
-
-
-
     def sub_water(self):
         context = zmq.Context()
         zmqsub = context.socket(zmq.SUB)
@@ -712,14 +687,13 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 except:
                     continue
                 ####
-                print('in sub gas', 'b', b)
-                channel_id = int(b[0:1].decode())
-                length = struct.unpack('!I', b[1:5])[0]
-                fenmiaohao = int(b[0:1].decode())
-                sec = struct.unpack('!I', b[6:10])[0]
+                channel_id = struct.unpack('!H', b[0:2])[0]  # 2
+                length = struct.unpack('!B', b[2:3])[0]  # 1
+                fenmiaohao = struct.unpack('!B', b[3:4])[0]  # 1
+                sec = struct.unpack('!I', b[4:8])[0]  # 4
 
                 for i in range(length):
-                    tmp = b[10+i*8:10+(i+1)*8]
+                    tmp = b[8+i*8:10+(i+1)*8]
                     data = struct.unpack('!f',tmp[0:4])[0]
                     us_stampe = struct.unpack('!I',tmp[4:8])[0]
                     x = round(sec + us_stampe / 1000000, 6)
@@ -732,10 +706,11 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                         self.gassupply2_y.append(data)
                 print('sub gas suply')
     def dis_gassupply(self):
-
-        self.curve_gassupply1.setData(x=self.gassupply1_x,y=self.gassupply1_y)
+        self.curve_gassupply1.setData(y=self.gassupply1_y)
+        # self.curve_gassupply1.setData(x=self.gassupply1_x,y=self.gassupply1_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-        self.curve_gassupply2.setData(x=self.gassupply2_x,y=self.gassupply2_y)
+        self.curve_gassupply2.setData(y=self.gassupply2_y)
+        # self.curve_gassupply2.setData(x=self.gassupply2_x,y=self.gassupply2_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
 
         print('dis gassupply ')
@@ -759,10 +734,10 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                     continue
                 ####
                 print('in rfpower', 'b', b)
-                channel_id = int(b[0:1].decode())
-                length = struct.unpack('!I', b[1:5])[0]
-                fenmiaohao = int(b[0:1].decode())
-                sec = struct.unpack('!I', b[6:10])[0]
+                channel_id = struct.unpack('!H', b[0:2])[0]  # 2
+                length = struct.unpack('!B', b[2:3])[0]  # 1
+                fenmiaohao = struct.unpack('!B', b[3:4])[0]  # 1
+                sec = struct.unpack('!I', b[4:8])[0]  # 4
                 print('length:',length)
 
                 for i in range(length):
@@ -806,14 +781,14 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 except:
                     continue
                 ####
-                channel_id = int(b[0:1].decode())
-                length = struct.unpack('!I', b[1:5])[0]
-                fenmiaohao = int(b[0:1].decode())
-                sec = struct.unpack('!I', b[6:10])[0]
+                channel_id = struct.unpack('!H', b[0:2])[0]  # 2
+                length = struct.unpack('!B', b[2:3])[0]  # 1
+                fenmiaohao = struct.unpack('!B', b[3:4])[0]  # 1
+                sec = struct.unpack('!I', b[4:8])[0]  # 4
                 # print('length:',length)
 
                 for i in range(length):
-                    tmp = b[10+i*8:10+(i+1)*8]
+                    tmp = b[8+i*8:10+(i+1)*8]
                     data = struct.unpack('!f',tmp[0:4])[0]
                     us_stampe = struct.unpack('!I',tmp[4:8])[0]
                     x = round(sec + us_stampe / 1000000, 6)
@@ -842,14 +817,14 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 except:
                     continue
                 ####
-                channel_id = int(b[0:1].decode())
-                length = struct.unpack('!I', b[1:5])[0]
-                fenmiaohao = int(b[0:1].decode())
-                sec = struct.unpack('!I', b[6:10])[0]
+                channel_id = struct.unpack('!H', b[0:2])[0]  # 2
+                length = struct.unpack('!B', b[2:3])[0]  # 1
+                fenmiaohao = struct.unpack('!B', b[3:4])[0]  # 1
+                sec = struct.unpack('!I', b[4:8])[0]  # 4
                 # print('length:',length)
 
                 for i in range(length):
-                    tmp = b[10 + i * 8:10 + (i + 1) * 8]
+                    tmp = b[8 + i * 8:10 + (i + 1) * 8]
                     data = struct.unpack('!f', tmp[0:4])[0]
                     us_stampe = struct.unpack('!I', tmp[4:8])[0]
                     x = round(sec + us_stampe / 1000000, 6)
@@ -867,20 +842,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.curve_pgpower2.setData(y= self.pgpower2_y)
 
         print('dis pgpower')
-
-    def dis_egpower(self):
-        ## eg：-20Kv的电压的电压情况
-        self.curve_egpower1.setData(x=self.egpower1_x,y= self.egpower1_y)
-        # self.curve_egpower1.setData( y=self.egpower1_y)
-        app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-        ## egpower:负极的电流大小
-        self.curve_egpower2.setData(x=self.egpower2_x,y= self.egpower2_y)
-        # self.curve_egpower2.setData(y=self.egpower2_y)
-        ## GG板的电流的大小
-        self.curve_egpower3.setData(x=self.egpower3_x,y= self.egpower3_y)
-        ## 后级挡板的电流的大小
-        self.curve_egpower4.setData(x=self.egpower4_x,y= self.egpower4_y)
-        print('dis egpower')
 
 
     def sub_egpowerhs1_2(self):
@@ -995,6 +956,22 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                     if channel_id == 5:
                         self.egpower4_x.append(x)
                         self.egpower4_y.append(data)
+    def dis_egpower(self):
+        ## eg：-20Kv的电压的电压情况
+        # self.curve_egpower1.setData(x=self.egpower1_x,y= self.egpower1_y)
+        self.curve_egpower1.setData( y=self.egpower1_y)
+        app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
+        ## egpower:负极的电流大小
+        # self.curve_egpower2.setData(x=self.egpower2_x,y= self.egpower2_y)
+        self.curve_egpower2.setData(y=self.egpower2_y)
+        ## GG板的电流的大小
+        # self.curve_egpower3.setData(x=self.egpower3_x,y= self.egpower3_y)
+        self.curve_egpower3.setData( y=self.egpower3_y)
+        ## 后级挡板的电流的大小
+        # self.curve_egpower4.setData(x=self.egpower4_x,y= self.egpower4_y)
+        self.curve_egpower4.setData(y=self.egpower4_y)
+        print('dis egpower')
+
 
 
     def tabchange(self):
@@ -1048,129 +1025,77 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
             print("Not developped yet")
 
         self.lasttabWidget = currenttab
-    def triangle_wave(self,start, zhouqi, midu, xdecimals, ydecimals):
-        '''
 
-        :param start: the fist value of the wave
-        :param end:  the end value of the wave
-        :param zhouqi:  the zhouqi range of the wave
-        :param midu:  every zhouqi, there are how many points in this zhouqi
-        :return: the x array and the y array
-        '''
+    def StartUpdate(self):
 
-        xout = []
-        yout = []
-        x = np.around(np.arange(start, start + zhouqi, midu), decimals=xdecimals)
-        # y = np.where(x<start+0.5, x-start, 0)
-        y = np.around(np.where(x >= start + zhouqi / 2, start + zhouqi - x, x - start), decimals=ydecimals) - 1
 
-        return x, y
+        print('In startupdate')
 
-    def update_02(self):
-        # global data3, ptr3, ptrtmp
-        # data3[ptr3] = np.random.normal()
-        self.data3[self.ptr3] = self.triy[self.ptrtmp]
-        # self.p3.clear()
-        if self.ptr3>1000:
-            datatmp1=self.data3[self.ptr3-1000:self.ptr3-1] # 显示最新的10000个数据
+        if self.lasttabWidget == 0:
+            self.start_gassupply()
+        elif self.lasttabWidget == 1:
+            self.start_rfpower()
 
-        self.ptrtmp += 1
-        if self.ptrtmp == 99:
-            self.ptrtmp = 0
-        self.ptr3 += 1
-        if self.ptr3 >= self.data3.shape[0]:
-            tmp = self.data3
-            self.data3 = np.empty(self.data3.shape[0] * 2)
-            self.data3[:tmp.shape[0]] = tmp
-        if self.ptr3>1001:
-            self.curve.setData(datatmp1)
+        elif self.lasttabWidget == 2:
+            self.start_pgpower()
+
+        elif self.lasttabWidget == 3:
+            self.start_egpower()
         else:
-            self.curve.setData(self.data3[:self.ptr3])
-        # self.p.setRange(xRange=[self.ptr3-50, self.ptr3+50])
+            print("Not developped yet")
 
-        # self.curve.setPos(self.ptr3-1000,0)
-        # print('can we in here  after 他和cureset')
-        listx = []
-        for i in range(self.ptr3):
-            listx.append(i+10)
-        self.curve2.setData(x=listx,y=self.data3[:self.ptr3])
-        # self.curve2sub.setData(self.data3[:self.ptr3]+1)
-        # self.scatter.setData(y=self.data3[:self.ptr3],)
-    def update_11(self):
-        # global data3, ptr3, ptrtmp
-        # data3[ptr3] = np.random.normal()
-        self.data3[self.ptr3] = self.triy[self.ptrtmp]
-        # self.p3.clear()
-        if self.ptr3>1000:
-            datatmp1=self.data3[self.ptr3-1000:self.ptr3-1] # 显示最新的10000个数据
 
-        self.ptrtmp += 1
-        if self.ptrtmp == 99:
-            self.ptrtmp = 0
-        self.ptr3 += 1
-        if self.ptr3 >= self.data3.shape[0]:
-            tmp = self.data3
-            self.data3 = np.empty(self.data3.shape[0] * 2)
-            self.data3[:tmp.shape[0]] = tmp
-        if self.ptr3>1001:
-            self.curve.setData(datatmp1)
+
+
+
+    def StopUpdate(self):
+        print('In stop update')
+        if self.lasttabWidget == 0:
+            try:
+                self.stop_gassupply()
+            except:
+                pass
+
+        elif self.lasttabWidget == 1:
+            try:
+                self.stop_rfpower()
+            except:
+                pass
+
+        elif self.lasttabWidget == 2:
+            try:
+                self.stop_pgpower()
+            except:
+                pass
+
+
+        elif self.lasttabWidget == 3:
+            try:
+                self.stop_egpower()
+            except:
+                pass
         else:
-            self.curve.setData(self.data3[:self.ptr3])
-        # self.p.setRange(xRange=[self.ptr3-50, self.ptr3+50])
-
-        # self.curve.setPos(self.ptr3-1000,0)
-        # print('can we in here  after 他和cureset')
-        listx = []
-        for i in range(self.ptr3):
-            listx.append(i+10)
-        self.curve2.setData(x=listx,y=self.data3[:self.ptr3])
-        # self.curve2sub.setData(self.data3[:self.ptr3]+1)
-        # self.scatter.setData(y=self.data3[:self.ptr3],)
-
-    def update2(self):
-        global  data_pgpowerx,data_pgpowery
-        datatmp1x=data_pgpowerx[len(data_pgpowerx)-10000:len(data_pgpowerx)-1] # 显示最新的10000个数据
-        datatmp1y = data_pgpowery[len(data_pgpowerx) - 10000:len(data_pgpowerx) - 1]
-        app.processEvents()
-        # print('we are in update2')
-        self.curve.setData(x=datatmp1x,y=datatmp1y)
-        self.curve.setPos(len(data_pgpowerx)-10000,0)
-        app.processEvents() #这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-        # 另外一种告诉的方案，就是额外的启动两个线程， 干脆就不在当前的线程上进行数据展示，就单独额外的线程进行绘图就好了
-
-
-        self.curve2.setData(data_pgpowery)
-        app.processEvents() #这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-
-        # self.curve2.setData(data_pgpowery)
+            print("Not developped yet")
 
 
 
-    def startRecving_02(self):
-        global data_receive_flag_02
-        data_receive_flag_02 = True
-    def stopRecving_02(self):
-        global data_receive_flag_02
-        data_receive_flag_02 = False
 
-    def startRecving_11(self):
-        global data_receive_flag_11
-        data_receive_flag_11 = True
-    def stopRecving_11(self):
-        global data_receive_flag_11
-        data_receive_flag_11 = False
+    def ClearUpdate(self):
 
-    def zmqrecvcallback(self):
-        print('we have call the recvback once ')
-        # self.update2()
+        print('In clear update')
+        if self.lasttabWidget == 0:
+                pass
 
-        # print(theint)
-        # Use this function to update our figure
-    def clearData(self):
-        global data_pgpowerx,data_pgpowery
-        # data_pgpowerx=[0]
-        # data_pgpowery=[0]
-        print('we have cleared the data')
+        elif self.lasttabWidget == 1:
+                pass
+
+        elif self.lasttabWidget == 2:
+                pass
+
+        elif self.lasttabWidget == 3:
+            pass
+        else:
+            print("Not developped yet")
         # print(data_pgpower)
         # self.curve.setData(data_pgpower)
         # self.curve2.setData(data_pgpowery)
@@ -1179,40 +1104,35 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         # self.p2.clear()
 
 
-    def exportdataup(self):
-        output = open('datadown.xls', 'w', encoding='gbk')
-        output.write('id\tdata\n')
-        for i in range(len(data_pgpower)):
-            output.write(str(i))
-            output.write('\t')
-            output.write(str(data_pgpower[i]))
-            output.write('\n')
-        output.close()
+    def ExportData(self):
+        print('In Export data')
+        # output = open('datadown.xls', 'w', encoding='gbk')
+        # output.write('id\tdata\n')
+        # for i in range(len(data_pgpower)):
+        #     output.write(str(i))
+        #     output.write('\t')
+        #     output.write(str(data_pgpower[i]))
+        #     output.write('\n')
+        # output.close()
 
-    def exportdatadown(self):
-        output = open('datadown.xls','w',encoding='gbk')
-        output.write('id\tdata\n')
-        for i in range(len(data_pgpower)):
-
-            output.write(str(i))
-            output.write('\t')
-            output.write(str(data_pgpower[i]))
-            output.write('\n')
-        output.close()
 
         pass
-    def exportfig(self):
-        print('we are in exporr fi g')
-        exporter = pg.exporters.ImageExporter(self.p.sceneObj)
-        print('aaa')
-        exporter.export(fileName='figure1.png')
+    def ExportFigure(self):
+        print('In export figure')
+        # exporter = pg.exporters.ImageExporter(self.p.sceneObj)
+        # print('aaa')
+        # exporter.export(fileName='figure1.png')
+        #
+        # exporter1 = pg.exporters.ImageExporter(self.p2.sceneObj)
+        # exporter1.export('figure2.png')
+        #
+        # exporter2 = pg.exporters.ImageExporter(self.p2.sceneObj)
+        # exporter2.export('figure3.png')
 
-        exporter1 = pg.exporters.ImageExporter(self.p2.sceneObj)
-        exporter1.export('figure2.png')
-
-        exporter2 = pg.exporters.ImageExporter(self.p2.sceneObj)
-        exporter2.export('figure3.png')
-
+    def SetDataDensity(self):
+        print("data densnity ")
+        spinvalue = self.spinBox.value()
+        print('spinvalue ',spinvalue)
 
 
 
