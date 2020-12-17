@@ -100,7 +100,7 @@ def level1_udp_send():
     data1=0
     data2=0
     start_time = time.perf_counter()
-    Time_interal = 0.015
+    Time_interal = 0.1
     Time_last = 10
 
     for i in range(100):
@@ -108,8 +108,8 @@ def level1_udp_send():
 
         msg1 = b''
         msg2 = b''
-        channelid1 = struct.pack('!H', 1)
-        channelid2 = struct.pack('!H', 2)
+        channelid1 = struct.pack('!H', 7)
+        channelid2 = struct.pack('!H', 8)
         fenmiaocnt =struct.pack('!B', 100)
         length = struct.pack('!B', 100)
         # 将当前的时间转化成对应的sec，然后进行数据的上传
@@ -140,8 +140,8 @@ def level1_udp_send():
         # msg = sec+channels+channel_data_cnt+struct.pack('!f',data)+us_stampe
         high_pricision_delay(Time_interal)
 
-        client_socket.sendto(msg1, (nis_hsdd_configfile.hs1_udp_recv_addr,nis_hsdd_configfile.hs1_udp_recv_port))
-        client_socket.sendto(msg2, (nis_hsdd_configfile.hs1_udp_recv_addr,nis_hsdd_configfile.hs1_udp_recv_port))
+        client_socket.sendto(msg1, (nis_hsdd_configfile.hs4_udp_recv_addr,nis_hsdd_configfile.hs4_udp_recv_port))
+        client_socket.sendto(msg2, (nis_hsdd_configfile.hs4_udp_recv_addr,nis_hsdd_configfile.hs4_udp_recv_port))
     end_time = time.perf_counter()
 
 

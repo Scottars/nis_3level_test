@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>4</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_4">
     <attribute name="title">
@@ -143,14 +143,11 @@
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
-       <widget class="PlotWidget" name="graphicsView_14"/>
-      </item>
       <item row="1" column="0">
        <widget class="PlotWidget" name="graphicsView_15"/>
       </item>
-      <item row="2" column="0">
-       <widget class="PlotWidget" name="graphicsView_16"/>
+      <item row="0" column="0">
+       <widget class="PlotWidget" name="graphicsView_14"/>
       </item>
      </layout>
     </widget>

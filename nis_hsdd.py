@@ -49,15 +49,12 @@ class Ui_Dialog(object):
         self.gridLayout_4 = QtWidgets.QGridLayout(self.gridLayoutWidget_12)
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_4.setObjectName("gridLayout_4")
-        self.graphicsView_14 = PlotWidget(self.gridLayoutWidget_12)
-        self.graphicsView_14.setObjectName("graphicsView_14")
-        self.gridLayout_4.addWidget(self.graphicsView_14, 0, 0, 1, 1)
         self.graphicsView_15 = PlotWidget(self.gridLayoutWidget_12)
         self.graphicsView_15.setObjectName("graphicsView_15")
         self.gridLayout_4.addWidget(self.graphicsView_15, 1, 0, 1, 1)
-        self.graphicsView_16 = PlotWidget(self.gridLayoutWidget_12)
-        self.graphicsView_16.setObjectName("graphicsView_16")
-        self.gridLayout_4.addWidget(self.graphicsView_16, 2, 0, 1, 1)
+        self.graphicsView_14 = PlotWidget(self.gridLayoutWidget_12)
+        self.graphicsView_14.setObjectName("graphicsView_14")
+        self.gridLayout_4.addWidget(self.graphicsView_14, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_6 = QtWidgets.QWidget()
         self.tab_6.setObjectName("tab_6")
@@ -403,7 +400,7 @@ class Ui_Dialog(object):
         self.radioButton_2.setObjectName("radioButton_2")
 
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):

@@ -69,7 +69,7 @@ def process_threadfunc(context):
 
     counter= 0
     global flagtoreceive
-    db = pymysql.connect(host='192.168.100.78', user='scottar', password='123456', db='nis_hsdd', port=3306, charset='utf8')
+    db = pymysql.connect(host='192.168.100.175', user='scottar', password='123456', db='nis_hsdd', port=3306, charset='utf8')
     cur = db.cursor()
 
     flagtoreceive = True

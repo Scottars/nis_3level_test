@@ -84,26 +84,26 @@ leadingoutpower_ui_intertal='10' #单位是ms
 
 
 
-hs1_sub_addr = 'tcp://192.168.100.165:5222'
-hs2_sub_addr = 'tcp://192.168.100.166:5222'
-hs3_sub_addr = 'tcp://192.168.100.167:5222'
-hs4_sub_addr = 'tcp://192.168.100.168:5222'
-hs5_sub_addr = 'tcp://192.168.100.169:5222'
+hs1_sub_addr = 'tcp://192.168.100.165:10000'
+hs2_sub_addr = 'tcp://192.168.100.165:10001'
+hs3_sub_addr = 'tcp://192.168.100.165:10002'
+hs4_sub_addr = 'tcp://192.168.100.165:10003'
+hs5_sub_addr = 'tcp://192.168.100.165:10004'
 
 hs1_udp_recv_addr = '192.168.100.165'
 hs1_udp_recv_port = 5000
 
-hs2_udp_recv_addr = '192.168.100.176'
-hs3_udp_recv_port = 5000
+hs2_udp_recv_addr = '192.168.100.165'
+hs2_udp_recv_port = 5001
 
-hs3_udp_recv_addr = '192.168.100.177'
-hs3_udp_recv_port = 5000
+hs3_udp_recv_addr = '192.168.100.165'
+hs3_udp_recv_port = 5002
 
-hs4_udp_recv_addr = '192.168.100.178'
-hs4_udp_recv_port = 5000
+hs4_udp_recv_addr = '192.168.100.165'
+hs4_udp_recv_port = 5003
 
-hs5_udp_recv_addr = '192.168.100.179'
-hs5_udp_recv_port = 5000
+hs5_udp_recv_addr = '192.168.100.165'
+hs5_udp_recv_port = 5004
 
 
 

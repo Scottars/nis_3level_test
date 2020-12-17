@@ -272,7 +272,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         self.p_gassupply1 = self.graphicsView_14
         self.p_gassupply2 = self.graphicsView_15
-        self.p_gassupply3 = self.graphicsView_16
 
 
         self.p_rfpower1 = self.graphicsView_19
@@ -299,7 +298,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         self.p_gassupply1.setDownsampling(mode='subsample')
         self.p_gassupply2.setDownsampling(mode='subsample')
-        self.p_gassupply3.setDownsampling(mode='subsample')
 
         self.p_rfpower1.setDownsampling(mode='subsample')
         self.p_rfpower2.setDownsampling(mode='subsample')
@@ -324,7 +322,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         self.p_gassupply1.setClipToView(True)
         self.p_gassupply2.setClipToView(True)
-        self.p_gassupply3.setClipToView(True)
 
         self.p_rfpower1.setClipToView(True)
         self.p_rfpower2.setClipToView(True)
@@ -370,9 +367,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.p_gassupply2.setLabel("bottom", "Timestamp", units='s')
         self.p_gassupply2.setTitle('627D Pressure')
 
-        self.p_gassupply3.setLabel("left", "value", units='L/min')
-        self.p_gassupply3.setLabel("bottom", "Timestamp", units='s')
-        self.p_gassupply3.setTitle('1479A  流量计')
 
 
         self.p_rfpower1.setLabel("left", "value", units='L/min')
@@ -449,7 +443,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         self.curve_gassupply1 = self.p_gassupply1.plot(pen=(0, 0, 0))
         self.curve_gassupply2 = self.p_gassupply2.plot(pen=(0, 0, 0))
-        self.curve_gassupply3 = self.p_gassupply3.plot(pen=(0, 0, 0))
 
         self.curve_rfpower1 = self.p_rfpower1.plot(pen=(0, 0, 0))
         self.curve_rfpower2 = self.p_rfpower2.plot(pen=(0, 0, 0))
@@ -483,8 +476,6 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.gassupply1_y = []
         self.gassupply2_x = []
         self.gassupply2_y = []
-        self.gassupply3_x = []
-        self.gassupply3_y = []
 
         self.rfpower1_x = []
         self.rfpower1_y = []
@@ -827,7 +818,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                     if channel_id == 1:
                         self.pgpower1_x.append(x)
                         self.pgpower1_y.append(data)
-                    elif channel_id == 2:
+                    elif channel_id == 6:
                         self.pgpower2_x.append(x)
                         self.pgpower2_y.append(data)
                 print('sub pgpower',len(self.pgpower1_x))
