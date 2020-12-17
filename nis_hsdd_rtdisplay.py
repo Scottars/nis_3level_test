@@ -50,161 +50,6 @@ def stop_thread(thread):
     #     print("Already clear the thread")
 
 
-
-# 水冷数据接收
-class zmqrecvthread_02(QtCore.QThread):
-    trigger=QtCore.pyqtSignal()
-
-    def __init__(self):
-        super().__init__()
-        self.context=zmq.Context()
-        self.zmqsub=self.context.socket(zmq.SUB)
-        self.zmqsub.setsockopt(zmq.SUBSCRIBE,b'')
-        # self.subaddr='tcp://192.168.127.200:10011'
-        self.subaddr='tcp://192.168.127.201:5002'
-        # self.subaddr='inproc://iiii'
-        print('in the thread init')
-        self.zmqsub.connect(self.subaddr)
-        self.flag=0
-        # # Initialize poll set
-        # self.poller = zmq.Poller()
-        # self.poller.register(self.zmqsub,zmq.POLLIN)
-
-    def run(self):
-        global  data_pgpower,data_receive_flag_02
-        global pic2
-        print('we are running ')
-        print(self.subaddr)
-        self.flag=1
-        i=1
-        counter=0
-        while True:
-            if self.flag:
-                try:
-                    # b = self.zmqsub.recv(zmq.DONTWAIT)
-                    b = self.zmqsub.recv()
-                    # print('recbeiving b',b)
-                    counter+=1
-                    # print('num',counter,'content:',struct.unpack('!f',b[0:4]))
-                    for i in range(10):
-                        tmpb = b[i * 36:(i + 1) * 36]
-                        tmpby = tmpb[4:8]
-                        tmpbx = tmpb[10:36]
-
-                        try:
-                            xmin = int(tmpbx[-12:-10].decode())
-                            xs = float(tmpbx[-9:].decode())
-                            x = xmin*60+xs
-                            y = struct.unpack('!f', tmpby)[0]
-
-                            # print('x:',x,'y:',y)
-                            data_pgpowerx.append(x)
-                            data_pgpowery.append(y)
-                        except:
-                            print('time sample error')
-                except zmq.Again:
-                    print('TO recv again')
-                    pass
-    def stop(self):
-        self.flag=0
-        print('we have stop the thread in stop')
-
-
-# 引出电源数据接收
-class zmqrecvthread_11(QtCore.QThread):
-    trigger=QtCore.pyqtSignal()
-
-    def __init__(self):
-        super().__init__()
-        self.context=zmq.Context()
-        self.zmqsub=self.context.socket(zmq.SUB)
-        self.zmqsub.setsockopt(zmq.SUBSCRIBE,b'')
-        # self.subaddr='tcp://192.168.127.200:10011'
-        self.subaddr='tcp://192.168.127.201:5011'
-        # self.subaddr='inproc://iiii'
-        print('in the thread init')
-        self.zmqsub.connect(self.subaddr)
-        self.flag=0
-        # # Initialize poll set
-        # self.poller = zmq.Poller()
-        # self.poller.register(self.zmqsub,zmq.POLLIN)
-
-    def run(self):
-        global  data_pgpower,data_receive_flag_11
-        global pic2
-        print('we are running ')
-        print(self.subaddr)
-        self.flag=1
-        i=1
-        counter=0
-        while True:
-            if data_receive_flag_11:
-                try:
-                    # b = self.zmqsub.recv(zmq.DONTWAIT)
-                    b = self.zmqsub.recv()
-                    # print('recbeiving b',b)
-                    counter+=1
-                    # print('num',counter,'content:',struct.unpack('!f',b[0:4]))
-                    for i in range(10):
-                        tmpb = b[i * 36:(i + 1) * 36]
-                        tmpby = tmpb[4:8]
-                        tmpbx = tmpb[10:36]
-
-                        try:
-                            xmin = int(tmpbx[-12:-10].decode())
-                            xs = float(tmpbx[-9:].decode())
-                            x = xmin*60+xs
-                            y = struct.unpack('!f', tmpby)[0]
-                            data_pgpowerx.append(x)
-                            data_pgpowery.append(y)
-                        except:
-                            print('time sample error')
-                except zmq.Again:
-                    print('TO recv again')
-                    pass
-
-
-class Savingrecvthread(QtCore.QThread):
-    trigger1=QtCore.pyqtSignal()
-
-    def __init__(self):
-        super().__init__()
-        self.context = zmq.Context()
-        self.recvsub11 = self.context.socket(zmq.SUB)
-        self.recvsub11addr = 'tcp://127.0.0.1:8888'
-        self.recvsub11.setsockopt(zmq.SUBSCRIBE, b'')
-        self.recvsub11.bind(self.recvsub11addr)
-        print('in here 111')
-        self.recvsub11.setsockopt(zmq.RCVTIMEO, 2000)
-
-        self.flag11stop = False
-
-    def run(self):
-        global savingprogress11value
-        print('canwe in here')
-
-        while True:
-            if self.flag11stop:
-                break
-            else:
-                try:
-                    x = self.recvsub11.recv()
-                    print('x',x)
-                    step = int(float(x.decode("utf-8")))
-                    savingprogress11value = step
-                    if step==100:
-                        print('already done')
-                        break
-                except:
-                    print('chaoshi')
-
-    def stop(self):
-        self.flag11stop=True
-        print('we have stop the thread in stop')
-
-
-
-
 class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
     def __init__(self):
         super(ChildDialogWin,self).__init__()
@@ -222,6 +67,13 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.tabWidget.setCurrentIndex(0)
         self.lasttabWidget = 0
         self.tabWidget.currentChanged.connect(self.tabchange)
+
+        # 此处设定的是密度的百分比
+        # 如果是100则表示其按照原有的密度实现
+        # 如果其是10 则按照1/10的情况进行显示
+        # 但是这样对数据接收部分的代码来说，有点麻烦
+        # 因此，下面这个数据表示当前的间隔是多少个
+        self.datadensity= 1
 
 
 
@@ -692,7 +544,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 fenmiaohao = struct.unpack('!B', b[3:4])[0]  # 1
                 sec = struct.unpack('!I', b[4:8])[0]  # 4
 
-                for i in range(length):
+                for i in range(0,length,self.datadensity):
                     tmp = b[8+i*8:10+(i+1)*8]
                     data = struct.unpack('!f',tmp[0:4])[0]
                     us_stampe = struct.unpack('!I',tmp[4:8])[0]
@@ -740,7 +592,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 sec = struct.unpack('!I', b[4:8])[0]  # 4
                 print('length:',length)
 
-                for i in range(length):
+                for i in range(0, length, self.datadensity):
                     tmp = b[10+i*8:10+(i+1)*8]
                     data = struct.unpack('!f',tmp[0:4])[0]
                     us_stampe = struct.unpack('!I',tmp[4:8])[0]
@@ -787,7 +639,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 sec = struct.unpack('!I', b[4:8])[0]  # 4
                 # print('length:',length)
 
-                for i in range(length):
+                for i in range(0, length, self.datadensity):
                     tmp = b[8+i*8:10+(i+1)*8]
                     data = struct.unpack('!f',tmp[0:4])[0]
                     us_stampe = struct.unpack('!I',tmp[4:8])[0]
@@ -823,7 +675,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 sec = struct.unpack('!I', b[4:8])[0]  # 4
                 # print('length:',length)
 
-                for i in range(length):
+                for i in range(0, length, self.datadensity):
                     tmp = b[8 + i * 8:10 + (i + 1) * 8]
                     data = struct.unpack('!f', tmp[0:4])[0]
                     us_stampe = struct.unpack('!I', tmp[4:8])[0]
@@ -867,7 +719,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 fenmiaohao = struct.unpack('!B', b[3:4])[0]  # 1
                 sec = struct.unpack('!I', b[4:8])[0]  # 4
 
-                for i in range(length):  # 此处可通过设定start，end，间隔  来选择密度
+                for i in range(0, length, self.datadensity):  # 此处可通过设定start，end，间隔  来选择密度
                     tmp = b[8 + i * 8:10 + (i + 1) * 8]
                     data = struct.unpack('!f', tmp[0:4])[0]
                     us_stamp = struct.unpack('!I', tmp[4:8])[0]
@@ -904,7 +756,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
                 if channel_id == 3:
                     print('channel id is ', channel_id)
-                for i in range(100):
+                for i in range(0, length, self.datadensity):
                     tmp = b[8 + i * 8:10 + (i + 1) * 8]
                     data = struct.unpack('!f', tmp[0:4])[0]
                     us_stamp = struct.unpack('!I', tmp[4:8])[0]
@@ -946,7 +798,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
                 if channel_id ==5:
                     print('channel id is ',channel_id)
-                for i in range(100):
+                for i in range(0, length, self.datadensity):
                     tmp = b[8+i*8:10+(i+1)*8]
                     data = struct.unpack('!f',tmp[0:4])[0]
                     us_stamp = struct.unpack('!I',tmp[4:8])[0]
@@ -1133,6 +985,15 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         print("data densnity ")
         spinvalue = self.spinBox.value()
         print('spinvalue ',spinvalue)
+
+
+        if spinvalue >= 100:
+            self.datadensity = 1
+        elif spinvalue <= 1:
+            self.datadensity ==100
+        else:
+            self.datadensity =  100-spinvalue
+
 
 
 
