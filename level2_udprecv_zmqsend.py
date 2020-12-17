@@ -53,7 +53,7 @@ def udp_recv_zmq_send(context, port):
     # socketzmq = context.socket(zmq.PUB)
     # socketzmq.bind("tcp://115.156.162.76:6000")
     # reveiver_url = "ipc://11_Router"
-    reveiver_url = nis_hsdd_configfile.level_2_08_egpower_sub_addr
+    reveiver_url = nis_hsdd_configfile.hs1_sub_addr
 
     socketzmq = context.socket(zmq.PUB)
     socketzmq.set_hwm(HWM_VAL)
@@ -63,7 +63,7 @@ def udp_recv_zmq_send(context, port):
 
 
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    client_socket.bind((nis_hsdd_configfile.level_2_08_udp_rcv_addr, 8080))
+    client_socket.bind((nis_hsdd_configfile.hs1_udp_recv_addr,nis_hsdd_configfile.hs1_udp_recv_port))
     client_socket.settimeout(1)
     print('we have connected to the tcp data send server!---port is :', port)
     packagenum = 0
