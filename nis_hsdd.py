@@ -328,7 +328,7 @@ class Ui_Dialog(object):
         self.pushButton_58.setObjectName("pushButton_58")
 
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):

@@ -116,8 +116,8 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         self.p_egpower1 = self.graphicsView_25
         self.p_egpower2 = self.graphicsView_26
-        self.p_egpower3 = self.graphicsView_26
-        self.p_egpower4 = self.graphicsView_27
+        self.p_egpower3 = self.graphicsView_27
+        self.p_egpower4 = self.graphicsView_28
 
 
         self.p_water1.setDownsampling(mode='subsample')
@@ -567,6 +567,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         print('dis gassupply ')
     def sub_rfpower(self):
+        print('in sub rf power')
         context = zmq.Context()
         zmqsub = context.socket(zmq.SUB)
         zmqsub.setsockopt(zmq.SUBSCRIBE, b'')
@@ -585,15 +586,13 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 except:
                     continue
                 ####
-                print('in rfpower', 'b', b)
                 channel_id = struct.unpack('!H', b[0:2])[0]  # 2
                 length = struct.unpack('!B', b[2:3])[0]  # 1
                 fenmiaohao = struct.unpack('!B', b[3:4])[0]  # 1
                 sec = struct.unpack('!I', b[4:8])[0]  # 4
-                print('length:',length)
 
                 for i in range(0, length, self.datadensity):
-                    tmp = b[10+i*8:10+(i+1)*8]
+                    tmp = b[8+i*8:10+(i+1)*8]
                     data = struct.unpack('!f',tmp[0:4])[0]
                     us_stampe = struct.unpack('!I',tmp[4:8])[0]
                     x = round(sec + us_stampe / 1000000, 6)
@@ -604,15 +603,13 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                     elif channel_id == 8:
                         self.rfpower2_x.append(x)
                         self.rfpower2_y.append(data)
-                print('sub pgpower',len(self.pgpower1_x))
     def dis_rfpower(self):
         # self.curve_pgpower1.setData(x=self.pgpower1_x,y= self.pgpower1_y)
-        self.curve_rfpower1.setData(y= self.pgpower1_y)
+        self.curve_rfpower1.setData(y= self.rfpower1_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
         # self.curve_pgpower2.setData(x=self.pgpower2_x,y= self.pgpower2_y)
-        self.curve_rfpower2.setData(y= self.pgpower2_y)
+        self.curve_rfpower2.setData(y= self.rfpower2_y)
 
-        print('dis pgpower')
 
     def sub_pgpowerhs1_1(self):
         context = zmq.Context()
@@ -623,11 +620,11 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         zmqsub.setsockopt(zmq.RCVTIMEO, 500)
         # self.subaddr='inproc://iiii'
         # print('in the thread init')
-        self.flag_pgpower = True
+        self.flag_pgpowerhs1_1 = True
 
         zmqsub.connect(subaddr)
         while  True:
-            if self.flag_pgpower:
+            if self.flag_pgpowerhs1_1:
                 try:
                     b = zmqsub.recv()
                 except:
@@ -659,11 +656,11 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         zmqsub.setsockopt(zmq.RCVTIMEO, 500)
         # self.subaddr='inproc://iiii'
         # print('in the thread init')
-        self.flag_pgpower = True
+        self.flag_pgpowerhs3_6 = True
 
         zmqsub.connect(subaddr)
         while True:
-            if self.flag_pgpower:
+            if self.flag_pgpowerhs3_6:
                 try:
                     b = zmqsub.recv()
                 except:
@@ -709,7 +706,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         zmqsub.connect(subaddr)
         while True:
-            if self.flag_egpower:
+            if self.flag_egpowerhs1_2:
                 try:
                     b = zmqsub.recv()
                 except:
