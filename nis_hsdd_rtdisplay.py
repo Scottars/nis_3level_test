@@ -881,15 +881,28 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         print('In startupdate')
 
         if self.lasttabWidget == 0:
-            self.start_gassupply()
+            if self.flag_gassupply: ## 防止一个部分的线程连续启动两次
+                pass
+            else:
+                self.start_gassupply()
         elif self.lasttabWidget == 1:
-            self.start_rfpower()
+            if self.flag_rfpower: ## 防止一个部分的线程连续启动两次
+                pass
+            else:
+                self.start_rfpower()
 
         elif self.lasttabWidget == 2:
-            self.start_pgpower()
+            if self.flag_pgpower: ## 防止一个部分的线程连续启动两次
+                pass
+            else:
+                self.start_pgpower()
 
         elif self.lasttabWidget == 3:
-            self.start_egpower()
+            if self.flag_egpowerhs1_2: ## 防止一个部分的线程连续启动两次
+                pass
+            else:
+
+                self.start_egpower()
         else:
             print("Not developped yet")
 
@@ -898,7 +911,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
 
     def StopUpdate(self):
-        print('In stop update')
+        print('In stop update',self.lasttabWidget)
         if self.lasttabWidget == 0:
             try:
                 self.stop_gassupply()
@@ -933,6 +946,16 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         print('In clear update')
         if self.lasttabWidget == 0:
+                self.gassupply1_x=[]
+                self.gassupply1_y = []
+                self.gassupply2_x = []
+                self.gassupply2_y = []
+                # self.curve_gassupply1.setData(y=self.gassupply1_y)
+                # self.curve_gassupply1.setData(y=self.gassupply2_y)
+                self.curve_gassupply1.setData(x = self.gassupply1_x,y=self.gassupply1_y)
+                self.curve_gassupply2.setData(x=self.gassupply2_x, y=self.gassupply2_y)
+                # self.p_gassupply1.close()
+                # self.p_gassupply2.close()
                 pass
 
         elif self.lasttabWidget == 1:
@@ -976,7 +999,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         # exporter1.export('figure2.png')
         #
         # exporter2 = pg.exporters.ImageExporter(self.p2.sceneObj)
-        # exporter2.export('figure3.png')
+        #         # exporter2.export('figure3.png')
 
     def SetDataDensity(self):
         print("data densnity ")
