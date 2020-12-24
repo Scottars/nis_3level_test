@@ -273,7 +273,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.curve_water7 = self.p_water7.plot(pen=pg.mkPen(color=(0, 0, 0),width=5))
         self.curve_water8 = self.p_water8.plot(pen=pg.mkPen(color=(0, 0, 0),width=5))
 
-        self.curve_gassupply1 = self.p_gassupply1.plot(symbol='o',symbolSize=4)
+        self.curve_gassupply1 = self.p_gassupply1.plot(pen=(0, 0, 0))
         self.curve_gassupply2 = self.p_gassupply2.plot(pen=(0, 0, 0))
 
         self.curve_rfpower1 = self.p_rfpower1.plot(pen=(0, 0, 0))
@@ -336,11 +336,13 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         self.flag_pgpower = True
         self.flag_egpower = True
 
+        self.fresh_interval = 100
+
     def start_water(self):
         print('start water')
         self.timer_water = QtCore.QTimer()
         self.timer_water.timeout.connect(self.dis_water)
-        self.timer_water.start(1000) # 这个是
+        self.timer_water.start(self.fresh_interval) # 这个是
 
         self.flag_water = True
         self.sub_water_thread  = threading.Thread(target = self.sub_water)
@@ -349,7 +351,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         print('start gas supply')
         self.timer_gassupply = QtCore.QTimer()
         self.timer_gassupply.timeout.connect(self.dis_gassupply)
-        self.timer_gassupply.start(1000)  # 这个是
+        self.timer_gassupply.start(self.fresh_interval)  # 这个是
 
         self.flag_gassupply = True
         self.sub_gassupply_thread = threading.Thread(target=self.sub_gassupply)
@@ -359,7 +361,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         print('start rf power')
         self.timer_rfpower = QtCore.QTimer()
         self.timer_rfpower.timeout.connect(self.dis_rfpower)
-        self.timer_rfpower.start(1000)  # 这个是
+        self.timer_rfpower.start(self.fresh_interval)  # 这个是
 
         self.flag_rfpower = True
         self.sub_rfpower_thread = threading.Thread(target=self.sub_rfpower)
@@ -370,7 +372,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
 
         self.timer_pgpower = QtCore.QTimer()
         self.timer_pgpower.timeout.connect(self.dis_pgpower)
-        self.timer_pgpower.start(1000)
+        self.timer_pgpower.start(self.fresh_interval)
 
         self.flag_pgpowerhs1_1 = True
         self.sub_pgpowerhs1_1_thread = threading.Thread(target=self.sub_pgpowerhs1_1)
@@ -384,7 +386,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
         print("start egpower")
         self.timer_egpowerhs1_2 = QtCore.QTimer()
         self.timer_egpowerhs1_2.timeout.connect(self.dis_egpower)
-        self.timer_egpowerhs1_2.start(1000)
+        self.timer_egpowerhs1_2.start(self.fresh_interval)
         self.start_egpowerhs1_2()
         self.start_egpowerhs2_3_4()
         self.start_egpowerhs3_5()
@@ -558,11 +560,11 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                         self.gassupply2_y.append(data)
                 print('sub gas suply')
     def dis_gassupply(self):
-        self.curve_gassupply1.setData(y=self.gassupply1_y)
-        # self.curve_gassupply1.setData(x=self.gassupply1_x,y=self.gassupply1_y)
+        # self.curve_gassupply1.setData(y=self.gassupply1_y)
+        self.curve_gassupply1.setData(x=self.gassupply1_x,y=self.gassupply1_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-        self.curve_gassupply2.setData(y=self.gassupply2_y)
-        # self.curve_gassupply2.setData(x=self.gassupply2_x,y=self.gassupply2_y)
+        # self.curve_gassupply2.setData(y=self.gassupply2_y)
+        self.curve_gassupply2.setData(x=self.gassupply2_x,y=self.gassupply2_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
 
         print('dis gassupply ')
@@ -603,12 +605,13 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                     elif channel_id == 8:
                         self.rfpower2_x.append(x)
                         self.rfpower2_y.append(data)
+                print('in rf sub addr ')
     def dis_rfpower(self):
-        # self.curve_pgpower1.setData(x=self.pgpower1_x,y= self.pgpower1_y)
-        self.curve_rfpower1.setData(y= self.rfpower1_y)
+        self.curve_rfpower1.setData(x=self.rfpower1_x,y= self.rfpower1_y)
+        # self.curve_rfpower1.setData(y= self.rfpower1_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-        # self.curve_pgpower2.setData(x=self.pgpower2_x,y= self.pgpower2_y)
-        self.curve_rfpower2.setData(y= self.rfpower2_y)
+        self.curve_rfpower2.setData(x=self.rfpower2_x,y= self.rfpower2_y)
+        # self.curve_rfpower2.setData(y= self.rfpower2_y)
 
 
     def sub_pgpowerhs1_1(self):
@@ -628,6 +631,7 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 try:
                     b = zmqsub.recv()
                 except:
+                    print('pg1 time out ')
                     continue
                 ####
                 channel_id = struct.unpack('!H', b[0:2])[0]  # 2
@@ -684,11 +688,11 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 print('sub pgpower-channel id 6 ：', len(self.pgpower1_x))
 
     def dis_pgpower(self):
-        # self.curve_pgpower1.setData(x=self.pgpower1_x,y= self.pgpower1_y)
-        self.curve_pgpower1.setData(y= self.pgpower1_y)
+        self.curve_pgpower1.setData(x=self.pgpower1_x,y= self.pgpower1_y)
+        # self.curve_pgpower1.setData(y= self.pgpower1_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
-        # self.curve_pgpower2.setData(x=self.pgpower2_x,y= self.pgpower2_y)
-        self.curve_pgpower2.setData(y= self.pgpower2_y)
+        self.curve_pgpower2.setData(x=self.pgpower2_x,y= self.pgpower2_y)
+        # self.curve_pgpower2.setData(y= self.pgpower2_y)
 
         print('dis pgpower')
 
@@ -716,16 +720,44 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 fenmiaohao = struct.unpack('!B', b[3:4])[0]  # 1
                 sec = struct.unpack('!I', b[4:8])[0]  # 4
 
-                for i in range(0, length, self.datadensity):  # 此处可通过设定start，end，间隔  来选择密度
-                    tmp = b[8 + i * 8:10 + (i + 1) * 8]
-                    data = struct.unpack('!f', tmp[0:4])[0]
-                    us_stamp = struct.unpack('!I', tmp[4:8])[0]
-                    x = round(sec + us_stamp / 1000000, 6)
-                    # print("data:",data,"x:",x)
-                    # 这个地方完全可以选择二维数据
-                    if channel_id == 2:
-                        self.egpower1_x.append(x)
-                        self.egpower1_y.append(data)
+                if fenmiaohao == 100:
+
+                    for i in range(0, length, self.datadensity):
+                        tmp = b[8 + i * 8:10 + (i + 1) * 8]
+                        data = struct.unpack('!f', tmp[0:4])[0]
+                        us_stamp = struct.unpack('!I', tmp[4:8])[0]
+                        x = round(sec + us_stamp / 1000000, 6)
+                        # print("data:",data,"x:",x)
+                        # 这个地方完全可以选择二维数据
+                        if channel_id == 2:
+                            self.egpower1_x.append(x)
+                            self.egpower1_y.append(data)
+
+                else:
+                    sec = sec +  1
+
+                    for i in range(0, fenmiaohao, self.datadensity):
+                        tmp = b[8 + i * 8:10 + (i + 1) * 8]
+                        data = struct.unpack('!f', tmp[0:4])[0]
+                        us_stamp = struct.unpack('!I', tmp[4:8])[0]
+                        x = round(sec + us_stamp / 1000000, 6)
+                        # print("data:",data,"x:",x)
+                        # 这个地方完全可以选择二维数据
+                        if channel_id == 2 :
+                            self.egpower1_x.append(x)
+                            self.egpower1_y.append(data)
+                    for i in range(fenmiaohao, length, self.datadensity):
+                        tmp = b[8 + i * 8:10 + (i + 1) * 8]
+                        data = struct.unpack('!f', tmp[0:4])[0]
+                        us_stamp = struct.unpack('!I', tmp[4:8])[0]
+                        x = round(sec+1 + us_stamp / 1000000, 6)
+                        # print("data:",data,"x:",x)
+                        # 这个地方完全可以选择二维数据
+                        if channel_id == 1:
+                            self.egpower1_x.append(x)
+                            self.egpower1_y.append(data)
+
+
 
     def sub_egpowerhs2_3_4(self):
         context = zmq.Context()
@@ -751,22 +783,53 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 sec = struct.unpack('!I', b[4:8])[0]  # 4
                 # print("Current sec:",sec)
 
-                if channel_id == 3:
-                    print('channel id is ', channel_id)
-                for i in range(0, length, self.datadensity):
-                    tmp = b[8 + i * 8:10 + (i + 1) * 8]
-                    data = struct.unpack('!f', tmp[0:4])[0]
-                    us_stamp = struct.unpack('!I', tmp[4:8])[0]
-                    x = round(sec + us_stamp / 1000000, 6)
-                    # print("data:",data,"x:",x)
-                    # 这个地方完全可以选择二维数据
-                    if channel_id == 3:
-                        self.egpower2_x.append(x)
-                        self.egpower2_y.append(data)
+                if fenmiaohao == 100:
 
-                    elif channel_id == 4:
-                        self.egpower3_x.append(x)
-                        self.egpower3_y.append(data)
+                    if channel_id == 5:
+                        print('channel id is ', channel_id)
+                    for i in range(0, length, self.datadensity):
+                        tmp = b[8 + i * 8:10 + (i + 1) * 8]
+                        data = struct.unpack('!f', tmp[0:4])[0]
+                        us_stamp = struct.unpack('!I', tmp[4:8])[0]
+                        x = round(sec + us_stamp / 1000000, 6)
+                        # print("data:",data,"x:",x)
+                        # 这个地方完全可以选择二维数据
+                        if channel_id == 3:
+                            self.egpower2_x.append(x)
+                            self.egpower2_y.append(data)
+                        elif channel_id == 4:
+                            self.egpower3_x.append(x)
+                            self.egpower3_y.append(data)
+                else:
+                    sec = sec + 1
+
+                    for i in range(0, fenmiaohao, self.datadensity):
+                        tmp = b[8 + i * 8:10 + (i + 1) * 8]
+                        data = struct.unpack('!f', tmp[0:4])[0]
+                        us_stamp = struct.unpack('!I', tmp[4:8])[0]
+                        x = round(sec + us_stamp / 1000000, 6)
+                        # print("data:",data,"x:",x)
+                        # 这个地方完全可以选择二维数据
+                        if channel_id == 3:
+                            self.egpower2_x.append(x)
+                            self.egpower2_y.append(data)
+                        elif channel_id ==4:
+                            self.egpower3_x.append(x)
+                            self.egpower3_y.append(data)
+
+                    for i in range(fenmiaohao, length, self.datadensity):
+                        tmp = b[8 + i * 8:10 + (i + 1) * 8]
+                        data = struct.unpack('!f', tmp[0:4])[0]
+                        us_stamp = struct.unpack('!I', tmp[4:8])[0]
+                        x = round(sec + 1 + us_stamp / 1000000, 6)
+                        # print("data:",data,"x:",x)
+                        # 这个地方完全可以选择二维数据
+                        if channel_id == 3:
+                            self.egpower2_x.append(x)
+                            self.egpower2_y.append(data)
+                        elif channel_id ==4:
+                            self.egpower3_x.append(x)
+                            self.egpower3_y.append(data)
                 print('sub egpower')
 
     def sub_egpowerhs3_5(self):
@@ -793,32 +856,61 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 sec = struct.unpack('!I', b[4:8])[0]  # 4
                 # print("Current sec:",sec)
 
-                if channel_id ==5:
-                    print('channel id is ',channel_id)
-                for i in range(0, length, self.datadensity):
-                    tmp = b[8+i*8:10+(i+1)*8]
-                    data = struct.unpack('!f',tmp[0:4])[0]
-                    us_stamp = struct.unpack('!I',tmp[4:8])[0]
-                    x = round(sec + us_stamp / 1000000, 6)
-                    # print("data:",data,"x:",x)
-                    # 这个地方完全可以选择二维数据
+                if fenmiaohao == 100:
+
                     if channel_id == 5:
-                        self.egpower4_x.append(x)
-                        self.egpower4_y.append(data)
+                        print('channel id is ', channel_id)
+                    for i in range(0, length, self.datadensity):
+                        tmp = b[8 + i * 8:10 + (i + 1) * 8]
+                        data = struct.unpack('!f', tmp[0:4])[0]
+                        us_stamp = struct.unpack('!I', tmp[4:8])[0]
+                        x = round(sec + us_stamp / 1000000, 6)
+                        # print("data:",data,"x:",x)
+                        # 这个地方完全可以选择二维数据
+                        if channel_id == 5:
+                            self.egpower4_x.append(x)
+                            self.egpower4_y.append(data)
+
+                else:
+                    sec = sec + 1
+
+                    for i in range(0, fenmiaohao, self.datadensity):
+                        tmp = b[8 + i * 8:10 + (i + 1) * 8]
+                        data = struct.unpack('!f', tmp[0:4])[0]
+                        us_stamp = struct.unpack('!I', tmp[4:8])[0]
+                        x = round(sec + us_stamp / 1000000, 6)
+                        # print("data:",data,"x:",x)
+                        # 这个地方完全可以选择二维数据
+                        if channel_id == 5:
+                            self.egpower4_x.append(x)
+                            self.egpower4_y.append(data)
+                    for i in range(fenmiaohao, length, self.datadensity):
+                        tmp = b[8 + i * 8:10 + (i + 1) * 8]
+                        data = struct.unpack('!f', tmp[0:4])[0]
+                        us_stamp = struct.unpack('!I', tmp[4:8])[0]
+                        x = round(sec+1 + us_stamp / 1000000, 6)
+                        # print("data:",data,"x:",x)
+                        # 这个地方完全可以选择二维数据
+                        if channel_id == 5:
+                            self.egpower4_x.append(x)
+                            self.egpower4_y.append(data)
+
+
+
     def dis_egpower(self):
         ## eg：-20Kv的电压的电压情况
-        # self.curve_egpower1.setData(x=self.egpower1_x,y= self.egpower1_y)
-        self.curve_egpower1.setData( y=self.egpower1_y)
+        self.curve_egpower1.setData(x=self.egpower1_x,y= self.egpower1_y)
+        # self.curve_egpower1.setData( y=self.egpower1_y)
         app.processEvents()  # 这句话的意思是将界面的控制权短暂的交给ui界面进行显示
         ## egpower:负极的电流大小
-        # self.curve_egpower2.setData(x=self.egpower2_x,y= self.egpower2_y)
-        self.curve_egpower2.setData(y=self.egpower2_y)
+        self.curve_egpower2.setData(x=self.egpower2_x,y= self.egpower2_y)
+        # self.curve_egpower2.setData(y=self.egpower2_y)
         ## GG板的电流的大小
-        # self.curve_egpower3.setData(x=self.egpower3_x,y= self.egpower3_y)
-        self.curve_egpower3.setData( y=self.egpower3_y)
+        self.curve_egpower3.setData(x=self.egpower3_x,y= self.egpower3_y)
+        # self.curve_egpower3.setData( y=self.egpower3_y)
         ## 后级挡板的电流的大小
-        # self.curve_egpower4.setData(x=self.egpower4_x,y= self.egpower4_y)
-        self.curve_egpower4.setData(y=self.egpower4_y)
+        self.curve_egpower4.setData(x=self.egpower4_x,y= self.egpower4_y)
+        # self.curve_egpower4.setData(y=self.egpower4_y)
         print('dis egpower')
 
 
@@ -959,12 +1051,43 @@ class ChildDialogWin(QDialog,nis_hsdd.Ui_Dialog):
                 pass
 
         elif self.lasttabWidget == 1:
-                pass
+                self.rgpower1_x = []
+                self.rfpower1_y = []
+                self.rfpower2_x = []
+                self.rfpower2_y = []
+                # self.curve_gassupply1.setData(y=self.gassupply1_y)
+                # self.curve_gassupply1.setData(y=self.gassupply2_y)
+                self.curve_rfpower1.setData(x=self.rfpower1_x, y=self.rfpower1_y)
+                self.curve_rfpower2.setData(x=self.rfpower2_x, y=self.rfpower2_y)
 
         elif self.lasttabWidget == 2:
+                self.pgpower1_x = []
+                self.pgpower1_y = []
+                self.pgpower2_x = []
+                self.pgpower2_y = []
+                # self.curve_gassupply1.setData(y=self.gassupply1_y)
+                # self.curve_gassupply1.setData(y=self.gassupply2_y)
+                self.curve_pgpower1.setData(x=self.pgpower1_x, y=self.pgpower1_y)
+                self.curve_pgpower2.setData(x=self.pgpower2_x, y=self.pgpower2_y)
                 pass
 
         elif self.lasttabWidget == 3:
+            self.egpower1_x = []
+            self.egpower1_y = []
+            self.egpower2_x = []
+            self.egpower2_y = []
+            self.egpower3_x = []
+            self.egpower3_y = []
+            self.egpower4_x = []
+            self.egpower4_y = []
+            # self.curve_gassupply1.setData(y=self.gassupply1_y)
+            # self.curve_gassupply1.setData(y=self.gassupply2_y)
+            self.curve_pgpower1.setData(x=self.pgpower1_x, y=self.pgpower1_y)
+            self.curve_pgpower2.setData(x=self.pgpower2_x, y=self.pgpower2_y)
+            self.curve_pgpower3.setData(x=self.pgpower3_x, y=self.pgpower3_y)
+            self.curve_pgpower4.setData(x=self.pgpower4_x, y=self.pgpower4_y)
+
+
             pass
         else:
             print("Not developped yet")

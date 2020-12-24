@@ -121,7 +121,7 @@ def udp_recv_zmq_send(context, port):
 def zmq_monitor_thread(context):
     global flag_start
     monitored_zmq = context.socket(zmq.REP)
-    monitored_zmqaddr =nis_hsdd_configfile.level_2_02_cefurance_req_addr
+    monitored_zmqaddr =nis_hsdd_configfile.level2_hs2_req_addr
     # monitored_zmq.setsockopt(zmq.IDENTITY,b'udp_11')
 
     monitored_zmq.bind(monitored_zmqaddr)
