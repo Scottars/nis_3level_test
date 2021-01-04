@@ -2,18 +2,20 @@
 
 # Form implementation generated from reading ui file 'process_manager.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1413, 922)
+        Dialog.resize(1124, 857)
         self.groupBox = QtWidgets.QGroupBox(Dialog)
-        self.groupBox.setGeometry(QtCore.QRect(0, 20, 621, 61))
+        self.groupBox.setGeometry(QtCore.QRect(0, 20, 651, 61))
         self.groupBox.setObjectName("groupBox")
         self.label_6 = QtWidgets.QLabel(self.groupBox)
         self.label_6.setGeometry(QtCore.QRect(530, 20, 41, 21))
@@ -34,7 +36,7 @@ class Ui_Dialog(object):
         self.label_7.setGeometry(QtCore.QRect(580, 20, 21, 21))
         self.label_7.setObjectName("label_7")
         self.tabWidget = QtWidgets.QTabWidget(Dialog)
-        self.tabWidget.setGeometry(QtCore.QRect(30, 90, 1111, 731))
+        self.tabWidget.setGeometry(QtCore.QRect(10, 80, 1081, 761))
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
@@ -602,16 +604,21 @@ class Ui_Dialog(object):
         self.label_10.setObjectName("label_10")
         self.pushButton_29 = QtWidgets.QPushButton(self.groupBox_6)
         self.pushButton_29.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_29.setStyleSheet("")
+        self.pushButton_29.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_29.setText("")
         self.pushButton_29.setObjectName("pushButton_29")
         self.pushButton_32 = QtWidgets.QPushButton(self.groupBox_6)
         self.pushButton_32.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_32.setStyleSheet("")
+        self.pushButton_32.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_32.setText("")
         self.pushButton_32.setObjectName("pushButton_32")
         self.label_18 = QtWidgets.QLabel(self.groupBox_6)
-        self.label_18.setGeometry(QtCore.QRect(540, 30, 121, 16))
+        self.label_18.setGeometry(QtCore.QRect(540, 30, 81, 16))
         self.label_18.setObjectName("label_18")
         self.label_19 = QtWidgets.QLabel(self.groupBox_6)
         self.label_19.setGeometry(QtCore.QRect(700, 30, 41, 21))
@@ -624,7 +631,9 @@ class Ui_Dialog(object):
         self.label_104.setObjectName("label_104")
         self.pushButton_123 = QtWidgets.QPushButton(self.groupBox_6)
         self.pushButton_123.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_123.setStyleSheet("")
+        self.pushButton_123.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_123.setText("")
         self.pushButton_123.setObjectName("pushButton_123")
         self.groupBox_4 = QtWidgets.QGroupBox(self.tab_2)
@@ -666,12 +675,17 @@ class Ui_Dialog(object):
         self.label_26.setObjectName("label_26")
         self.pushButton_33 = QtWidgets.QPushButton(self.groupBox_7)
         self.pushButton_33.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_33.setStyleSheet("")
+        self.pushButton_33.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_33.setText("")
         self.pushButton_33.setObjectName("pushButton_33")
         self.pushButton_31 = QtWidgets.QPushButton(self.groupBox_7)
         self.pushButton_31.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_31.setStyleSheet("")
+        self.pushButton_31.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_31.setText("")
         self.pushButton_31.setObjectName("pushButton_31")
         self.label_24 = QtWidgets.QLabel(self.groupBox_7)
@@ -682,14 +696,16 @@ class Ui_Dialog(object):
         self.label_25.setObjectName("label_25")
         self.pushButton_124 = QtWidgets.QPushButton(self.groupBox_7)
         self.pushButton_124.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_124.setStyleSheet("")
+        self.pushButton_124.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_124.setText("")
         self.pushButton_124.setObjectName("pushButton_124")
         self.label_17 = QtWidgets.QLabel(self.groupBox_7)
-        self.label_17.setGeometry(QtCore.QRect(260, 30, 61, 16))
+        self.label_17.setGeometry(QtCore.QRect(260, 30, 91, 16))
         self.label_17.setObjectName("label_17")
         self.label_105 = QtWidgets.QLabel(self.groupBox_7)
-        self.label_105.setGeometry(QtCore.QRect(400, 30, 91, 16))
+        self.label_105.setGeometry(QtCore.QRect(400, 30, 51, 16))
         self.label_105.setObjectName("label_105")
         self.groupBox_8 = QtWidgets.QGroupBox(self.tab_2)
         self.groupBox_8.setGeometry(QtCore.QRect(10, 130, 821, 61))
@@ -702,7 +718,10 @@ class Ui_Dialog(object):
         self.pushButton_41.setObjectName("pushButton_41")
         self.pushButton_42 = QtWidgets.QPushButton(self.groupBox_8)
         self.pushButton_42.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_42.setStyleSheet("")
+        self.pushButton_42.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_42.setText("")
         self.pushButton_42.setObjectName("pushButton_42")
         self.label_106 = QtWidgets.QLabel(self.groupBox_8)
@@ -713,7 +732,9 @@ class Ui_Dialog(object):
         self.label_27.setObjectName("label_27")
         self.pushButton_125 = QtWidgets.QPushButton(self.groupBox_8)
         self.pushButton_125.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_125.setStyleSheet("")
+        self.pushButton_125.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_125.setText("")
         self.pushButton_125.setObjectName("pushButton_125")
         self.label_28 = QtWidgets.QLabel(self.groupBox_8)
@@ -721,7 +742,9 @@ class Ui_Dialog(object):
         self.label_28.setObjectName("label_28")
         self.pushButton_43 = QtWidgets.QPushButton(self.groupBox_8)
         self.pushButton_43.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_43.setStyleSheet("")
+        self.pushButton_43.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_43.setText("")
         self.pushButton_43.setObjectName("pushButton_43")
         self.label_29 = QtWidgets.QLabel(self.groupBox_8)
@@ -750,7 +773,9 @@ class Ui_Dialog(object):
         self.label_32.setObjectName("label_32")
         self.pushButton_126 = QtWidgets.QPushButton(self.groupBox_9)
         self.pushButton_126.setGeometry(QtCore.QRect(480, 10, 30, 30))
-        self.pushButton_126.setStyleSheet("")
+        self.pushButton_126.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_126.setText("")
         self.pushButton_126.setObjectName("pushButton_126")
         self.label_31 = QtWidgets.QLabel(self.groupBox_9)
@@ -758,7 +783,9 @@ class Ui_Dialog(object):
         self.label_31.setObjectName("label_31")
         self.pushButton_47 = QtWidgets.QPushButton(self.groupBox_9)
         self.pushButton_47.setGeometry(QtCore.QRect(340, 10, 30, 30))
-        self.pushButton_47.setStyleSheet("")
+        self.pushButton_47.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_47.setText("")
         self.pushButton_47.setObjectName("pushButton_47")
         self.label_107 = QtWidgets.QLabel(self.groupBox_9)
@@ -766,7 +793,10 @@ class Ui_Dialog(object):
         self.label_107.setObjectName("label_107")
         self.pushButton_46 = QtWidgets.QPushButton(self.groupBox_9)
         self.pushButton_46.setGeometry(QtCore.QRect(640, 10, 30, 30))
-        self.pushButton_46.setStyleSheet("")
+        self.pushButton_46.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_46.setText("")
         self.pushButton_46.setObjectName("pushButton_46")
         self.groupBox_10 = QtWidgets.QGroupBox(self.tab_2)
@@ -780,7 +810,10 @@ class Ui_Dialog(object):
         self.pushButton_49.setObjectName("pushButton_49")
         self.pushButton_50 = QtWidgets.QPushButton(self.groupBox_10)
         self.pushButton_50.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_50.setStyleSheet("")
+        self.pushButton_50.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_50.setText("")
         self.pushButton_50.setObjectName("pushButton_50")
         self.label_35 = QtWidgets.QLabel(self.groupBox_10)
@@ -791,7 +824,9 @@ class Ui_Dialog(object):
         self.label_36.setObjectName("label_36")
         self.pushButton_127 = QtWidgets.QPushButton(self.groupBox_10)
         self.pushButton_127.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_127.setStyleSheet("")
+        self.pushButton_127.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_127.setText("")
         self.pushButton_127.setObjectName("pushButton_127")
         self.label_37 = QtWidgets.QLabel(self.groupBox_10)
@@ -802,7 +837,9 @@ class Ui_Dialog(object):
         self.label_38.setObjectName("label_38")
         self.pushButton_51 = QtWidgets.QPushButton(self.groupBox_10)
         self.pushButton_51.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_51.setStyleSheet("")
+        self.pushButton_51.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_51.setText("")
         self.pushButton_51.setObjectName("pushButton_51")
         self.label_108 = QtWidgets.QLabel(self.groupBox_10)
@@ -822,7 +859,9 @@ class Ui_Dialog(object):
         self.label_42.setObjectName("label_42")
         self.pushButton_133 = QtWidgets.QPushButton(self.groupBox_11)
         self.pushButton_133.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_133.setStyleSheet("")
+        self.pushButton_133.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_133.setText("")
         self.pushButton_133.setObjectName("pushButton_133")
         self.label_39 = QtWidgets.QLabel(self.groupBox_11)
@@ -830,7 +869,10 @@ class Ui_Dialog(object):
         self.label_39.setObjectName("label_39")
         self.pushButton_54 = QtWidgets.QPushButton(self.groupBox_11)
         self.pushButton_54.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_54.setStyleSheet("")
+        self.pushButton_54.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_54.setText("")
         self.pushButton_54.setObjectName("pushButton_54")
         self.label_114 = QtWidgets.QLabel(self.groupBox_11)
@@ -844,7 +886,9 @@ class Ui_Dialog(object):
         self.label_40.setObjectName("label_40")
         self.pushButton_55 = QtWidgets.QPushButton(self.groupBox_11)
         self.pushButton_55.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_55.setStyleSheet("")
+        self.pushButton_55.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_55.setText("")
         self.pushButton_55.setObjectName("pushButton_55")
         self.groupBox_12 = QtWidgets.QGroupBox(self.tab_2)
@@ -858,7 +902,10 @@ class Ui_Dialog(object):
         self.pushButton_57.setObjectName("pushButton_57")
         self.pushButton_58 = QtWidgets.QPushButton(self.groupBox_12)
         self.pushButton_58.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_58.setStyleSheet("")
+        self.pushButton_58.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_58.setText("")
         self.pushButton_58.setObjectName("pushButton_58")
         self.label_115 = QtWidgets.QLabel(self.groupBox_12)
@@ -869,7 +916,9 @@ class Ui_Dialog(object):
         self.label_43.setObjectName("label_43")
         self.pushButton_134 = QtWidgets.QPushButton(self.groupBox_12)
         self.pushButton_134.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_134.setStyleSheet("")
+        self.pushButton_134.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_134.setText("")
         self.pushButton_134.setObjectName("pushButton_134")
         self.label_44 = QtWidgets.QLabel(self.groupBox_12)
@@ -877,7 +926,9 @@ class Ui_Dialog(object):
         self.label_44.setObjectName("label_44")
         self.pushButton_59 = QtWidgets.QPushButton(self.groupBox_12)
         self.pushButton_59.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_59.setStyleSheet("")
+        self.pushButton_59.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_59.setText("")
         self.pushButton_59.setObjectName("pushButton_59")
         self.label_45 = QtWidgets.QLabel(self.groupBox_12)
@@ -897,7 +948,10 @@ class Ui_Dialog(object):
         self.pushButton_61.setObjectName("pushButton_61")
         self.pushButton_62 = QtWidgets.QPushButton(self.groupBox_13)
         self.pushButton_62.setGeometry(QtCore.QRect(640, 10, 30, 30))
-        self.pushButton_62.setStyleSheet("")
+        self.pushButton_62.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_62.setText("")
         self.pushButton_62.setObjectName("pushButton_62")
         self.label_116 = QtWidgets.QLabel(self.groupBox_13)
@@ -908,7 +962,9 @@ class Ui_Dialog(object):
         self.label_47.setObjectName("label_47")
         self.pushButton_135 = QtWidgets.QPushButton(self.groupBox_13)
         self.pushButton_135.setGeometry(QtCore.QRect(480, 10, 30, 30))
-        self.pushButton_135.setStyleSheet("")
+        self.pushButton_135.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_135.setText("")
         self.pushButton_135.setObjectName("pushButton_135")
         self.label_48 = QtWidgets.QLabel(self.groupBox_13)
@@ -916,7 +972,9 @@ class Ui_Dialog(object):
         self.label_48.setObjectName("label_48")
         self.pushButton_63 = QtWidgets.QPushButton(self.groupBox_13)
         self.pushButton_63.setGeometry(QtCore.QRect(340, 10, 30, 30))
-        self.pushButton_63.setStyleSheet("")
+        self.pushButton_63.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_63.setText("")
         self.pushButton_63.setObjectName("pushButton_63")
         self.label_49 = QtWidgets.QLabel(self.groupBox_13)
@@ -939,7 +997,10 @@ class Ui_Dialog(object):
         self.label_54.setObjectName("label_54")
         self.pushButton_66 = QtWidgets.QPushButton(self.groupBox_17)
         self.pushButton_66.setGeometry(QtCore.QRect(640, 10, 30, 30))
-        self.pushButton_66.setStyleSheet("")
+        self.pushButton_66.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_66.setText("")
         self.pushButton_66.setObjectName("pushButton_66")
         self.label_53 = QtWidgets.QLabel(self.groupBox_17)
@@ -950,7 +1011,9 @@ class Ui_Dialog(object):
         self.label_51.setObjectName("label_51")
         self.pushButton_136 = QtWidgets.QPushButton(self.groupBox_17)
         self.pushButton_136.setGeometry(QtCore.QRect(480, 10, 30, 30))
-        self.pushButton_136.setStyleSheet("")
+        self.pushButton_136.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_136.setText("")
         self.pushButton_136.setObjectName("pushButton_136")
         self.label_52 = QtWidgets.QLabel(self.groupBox_17)
@@ -958,7 +1021,9 @@ class Ui_Dialog(object):
         self.label_52.setObjectName("label_52")
         self.pushButton_67 = QtWidgets.QPushButton(self.groupBox_17)
         self.pushButton_67.setGeometry(QtCore.QRect(340, 10, 30, 30))
-        self.pushButton_67.setStyleSheet("")
+        self.pushButton_67.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_67.setText("")
         self.pushButton_67.setObjectName("pushButton_67")
         self.label_117 = QtWidgets.QLabel(self.groupBox_17)
@@ -990,7 +1055,9 @@ class Ui_Dialog(object):
         self.pushButton_25.setObjectName("pushButton_25")
         self.pushButton_80 = QtWidgets.QPushButton(self.groupBox_18)
         self.pushButton_80.setGeometry(QtCore.QRect(540, 10, 30, 30))
-        self.pushButton_80.setStyleSheet("")
+        self.pushButton_80.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_80.setText("")
         self.pushButton_80.setObjectName("pushButton_80")
         self.pushButton_81 = QtWidgets.QPushButton(self.groupBox_18)
@@ -1016,7 +1083,10 @@ class Ui_Dialog(object):
         self.pushButton_221.setObjectName("pushButton_221")
         self.pushButton_222 = QtWidgets.QPushButton(self.groupBox_24)
         self.pushButton_222.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_222.setStyleSheet("")
+        self.pushButton_222.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_222.setText("")
         self.pushButton_222.setObjectName("pushButton_222")
         self.label_184 = QtWidgets.QLabel(self.groupBox_24)
@@ -1027,7 +1097,9 @@ class Ui_Dialog(object):
         self.label_185.setObjectName("label_185")
         self.pushButton_223 = QtWidgets.QPushButton(self.groupBox_24)
         self.pushButton_223.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_223.setStyleSheet("")
+        self.pushButton_223.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_223.setText("")
         self.pushButton_223.setObjectName("pushButton_223")
         self.label_186 = QtWidgets.QLabel(self.groupBox_24)
@@ -1035,7 +1107,9 @@ class Ui_Dialog(object):
         self.label_186.setObjectName("label_186")
         self.pushButton_224 = QtWidgets.QPushButton(self.groupBox_24)
         self.pushButton_224.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_224.setStyleSheet("")
+        self.pushButton_224.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_224.setText("")
         self.pushButton_224.setObjectName("pushButton_224")
         self.label_187 = QtWidgets.QLabel(self.groupBox_24)
@@ -1060,12 +1134,17 @@ class Ui_Dialog(object):
         self.label_174.setObjectName("label_174")
         self.pushButton_212 = QtWidgets.QPushButton(self.groupBox_22)
         self.pushButton_212.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_212.setStyleSheet("")
+        self.pushButton_212.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_212.setText("")
         self.pushButton_212.setObjectName("pushButton_212")
         self.pushButton_213 = QtWidgets.QPushButton(self.groupBox_22)
         self.pushButton_213.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_213.setStyleSheet("")
+        self.pushButton_213.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_213.setText("")
         self.pushButton_213.setObjectName("pushButton_213")
         self.label_175 = QtWidgets.QLabel(self.groupBox_22)
@@ -1076,7 +1155,9 @@ class Ui_Dialog(object):
         self.label_176.setObjectName("label_176")
         self.pushButton_214 = QtWidgets.QPushButton(self.groupBox_22)
         self.pushButton_214.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_214.setStyleSheet("")
+        self.pushButton_214.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_214.setText("")
         self.pushButton_214.setObjectName("pushButton_214")
         self.label_177 = QtWidgets.QLabel(self.groupBox_22)
@@ -1101,12 +1182,17 @@ class Ui_Dialog(object):
         self.label_164.setObjectName("label_164")
         self.pushButton_202 = QtWidgets.QPushButton(self.groupBox_20)
         self.pushButton_202.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_202.setStyleSheet("")
+        self.pushButton_202.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_202.setText("")
         self.pushButton_202.setObjectName("pushButton_202")
         self.pushButton_203 = QtWidgets.QPushButton(self.groupBox_20)
         self.pushButton_203.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_203.setStyleSheet("")
+        self.pushButton_203.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_203.setText("")
         self.pushButton_203.setObjectName("pushButton_203")
         self.label_165 = QtWidgets.QLabel(self.groupBox_20)
@@ -1123,7 +1209,9 @@ class Ui_Dialog(object):
         self.label_168.setObjectName("label_168")
         self.pushButton_204 = QtWidgets.QPushButton(self.groupBox_20)
         self.pushButton_204.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_204.setStyleSheet("")
+        self.pushButton_204.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_204.setText("")
         self.pushButton_204.setObjectName("pushButton_204")
         self.groupBox_19 = QtWidgets.QGroupBox(self.tab_3)
@@ -1142,7 +1230,10 @@ class Ui_Dialog(object):
         self.label_154.setObjectName("label_154")
         self.pushButton_156 = QtWidgets.QPushButton(self.groupBox_19)
         self.pushButton_156.setGeometry(QtCore.QRect(640, 10, 30, 30))
-        self.pushButton_156.setStyleSheet("")
+        self.pushButton_156.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_156.setText("")
         self.pushButton_156.setObjectName("pushButton_156")
         self.label_155 = QtWidgets.QLabel(self.groupBox_19)
@@ -1153,7 +1244,9 @@ class Ui_Dialog(object):
         self.label_156.setObjectName("label_156")
         self.pushButton_157 = QtWidgets.QPushButton(self.groupBox_19)
         self.pushButton_157.setGeometry(QtCore.QRect(480, 10, 30, 30))
-        self.pushButton_157.setStyleSheet("")
+        self.pushButton_157.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_157.setText("")
         self.pushButton_157.setObjectName("pushButton_157")
         self.label_157 = QtWidgets.QLabel(self.groupBox_19)
@@ -1161,7 +1254,9 @@ class Ui_Dialog(object):
         self.label_157.setObjectName("label_157")
         self.pushButton_158 = QtWidgets.QPushButton(self.groupBox_19)
         self.pushButton_158.setGeometry(QtCore.QRect(340, 10, 30, 30))
-        self.pushButton_158.setStyleSheet("")
+        self.pushButton_158.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_158.setText("")
         self.pushButton_158.setObjectName("pushButton_158")
         self.label_158 = QtWidgets.QLabel(self.groupBox_19)
@@ -1180,7 +1275,10 @@ class Ui_Dialog(object):
         self.pushButton_216.setObjectName("pushButton_216")
         self.pushButton_217 = QtWidgets.QPushButton(self.groupBox_23)
         self.pushButton_217.setGeometry(QtCore.QRect(640, 10, 30, 30))
-        self.pushButton_217.setStyleSheet("")
+        self.pushButton_217.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_217.setText("")
         self.pushButton_217.setObjectName("pushButton_217")
         self.label_179 = QtWidgets.QLabel(self.groupBox_23)
@@ -1191,7 +1289,9 @@ class Ui_Dialog(object):
         self.label_180.setObjectName("label_180")
         self.pushButton_218 = QtWidgets.QPushButton(self.groupBox_23)
         self.pushButton_218.setGeometry(QtCore.QRect(480, 10, 30, 30))
-        self.pushButton_218.setStyleSheet("")
+        self.pushButton_218.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_218.setText("")
         self.pushButton_218.setObjectName("pushButton_218")
         self.label_181 = QtWidgets.QLabel(self.groupBox_23)
@@ -1199,7 +1299,9 @@ class Ui_Dialog(object):
         self.label_181.setObjectName("label_181")
         self.pushButton_219 = QtWidgets.QPushButton(self.groupBox_23)
         self.pushButton_219.setGeometry(QtCore.QRect(340, 10, 30, 30))
-        self.pushButton_219.setStyleSheet("")
+        self.pushButton_219.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_219.setText("")
         self.pushButton_219.setObjectName("pushButton_219")
         self.label_182 = QtWidgets.QLabel(self.groupBox_23)
@@ -1221,7 +1323,10 @@ class Ui_Dialog(object):
         self.pushButton_150.setObjectName("pushButton_150")
         self.pushButton_151 = QtWidgets.QPushButton(self.groupBox_15)
         self.pushButton_151.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_151.setStyleSheet("")
+        self.pushButton_151.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_151.setText("")
         self.pushButton_151.setObjectName("pushButton_151")
         self.label_149 = QtWidgets.QLabel(self.groupBox_15)
@@ -1232,7 +1337,9 @@ class Ui_Dialog(object):
         self.label_150.setObjectName("label_150")
         self.pushButton_152 = QtWidgets.QPushButton(self.groupBox_15)
         self.pushButton_152.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_152.setStyleSheet("")
+        self.pushButton_152.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_152.setText("")
         self.pushButton_152.setObjectName("pushButton_152")
         self.label_151 = QtWidgets.QLabel(self.groupBox_15)
@@ -1240,11 +1347,13 @@ class Ui_Dialog(object):
         self.label_151.setObjectName("label_151")
         self.pushButton_153 = QtWidgets.QPushButton(self.groupBox_15)
         self.pushButton_153.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_153.setStyleSheet("")
+        self.pushButton_153.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_153.setText("")
         self.pushButton_153.setObjectName("pushButton_153")
         self.label_152 = QtWidgets.QLabel(self.groupBox_15)
-        self.label_152.setGeometry(QtCore.QRect(260, 30, 71, 16))
+        self.label_152.setGeometry(QtCore.QRect(260, 30, 91, 16))
         self.label_152.setObjectName("label_152")
         self.label_153 = QtWidgets.QLabel(self.groupBox_15)
         self.label_153.setGeometry(QtCore.QRect(540, 30, 91, 16))
@@ -1265,7 +1374,9 @@ class Ui_Dialog(object):
         self.label_91.setObjectName("label_91")
         self.pushButton_146 = QtWidgets.QPushButton(self.groupBox_14)
         self.pushButton_146.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_146.setStyleSheet("")
+        self.pushButton_146.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_146.setText("")
         self.pushButton_146.setObjectName("pushButton_146")
         self.label_92 = QtWidgets.QLabel(self.groupBox_14)
@@ -1273,7 +1384,10 @@ class Ui_Dialog(object):
         self.label_92.setObjectName("label_92")
         self.pushButton_147 = QtWidgets.QPushButton(self.groupBox_14)
         self.pushButton_147.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_147.setStyleSheet("")
+        self.pushButton_147.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_147.setText("")
         self.pushButton_147.setObjectName("pushButton_147")
         self.label_147 = QtWidgets.QLabel(self.groupBox_14)
@@ -1287,7 +1401,9 @@ class Ui_Dialog(object):
         self.label_148.setObjectName("label_148")
         self.pushButton_148 = QtWidgets.QPushButton(self.groupBox_14)
         self.pushButton_148.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_148.setStyleSheet("")
+        self.pushButton_148.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_148.setText("")
         self.pushButton_148.setObjectName("pushButton_148")
         self.groupBox_21 = QtWidgets.QGroupBox(self.tab_3)
@@ -1303,7 +1419,10 @@ class Ui_Dialog(object):
         self.pushButton_206.setObjectName("pushButton_206")
         self.pushButton_207 = QtWidgets.QPushButton(self.groupBox_21)
         self.pushButton_207.setGeometry(QtCore.QRect(640, 20, 30, 30))
-        self.pushButton_207.setStyleSheet("")
+        self.pushButton_207.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_207.setText("")
         self.pushButton_207.setObjectName("pushButton_207")
         self.label_169 = QtWidgets.QLabel(self.groupBox_21)
@@ -1314,18 +1433,22 @@ class Ui_Dialog(object):
         self.label_170.setObjectName("label_170")
         self.pushButton_208 = QtWidgets.QPushButton(self.groupBox_21)
         self.pushButton_208.setGeometry(QtCore.QRect(480, 20, 30, 30))
-        self.pushButton_208.setStyleSheet("")
+        self.pushButton_208.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_208.setText("")
         self.pushButton_208.setObjectName("pushButton_208")
         self.label_171 = QtWidgets.QLabel(self.groupBox_21)
         self.label_171.setGeometry(QtCore.QRect(700, 30, 41, 21))
         self.label_171.setObjectName("label_171")
         self.label_172 = QtWidgets.QLabel(self.groupBox_21)
-        self.label_172.setGeometry(QtCore.QRect(540, 30, 121, 16))
+        self.label_172.setGeometry(QtCore.QRect(540, 30, 91, 16))
         self.label_172.setObjectName("label_172")
         self.pushButton_209 = QtWidgets.QPushButton(self.groupBox_21)
         self.pushButton_209.setGeometry(QtCore.QRect(340, 20, 30, 30))
-        self.pushButton_209.setStyleSheet("")
+        self.pushButton_209.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_209.setText("")
         self.pushButton_209.setObjectName("pushButton_209")
         self.label_173 = QtWidgets.QLabel(self.groupBox_21)
@@ -1353,7 +1476,9 @@ class Ui_Dialog(object):
         self.label_161.setObjectName("label_161")
         self.pushButton_197 = QtWidgets.QPushButton(self.groupBox_16)
         self.pushButton_197.setGeometry(QtCore.QRect(480, 10, 30, 30))
-        self.pushButton_197.setStyleSheet("")
+        self.pushButton_197.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_197.setText("")
         self.pushButton_197.setObjectName("pushButton_197")
         self.label_162 = QtWidgets.QLabel(self.groupBox_16)
@@ -1361,33 +1486,181 @@ class Ui_Dialog(object):
         self.label_162.setObjectName("label_162")
         self.pushButton_198 = QtWidgets.QPushButton(self.groupBox_16)
         self.pushButton_198.setGeometry(QtCore.QRect(340, 10, 30, 30))
-        self.pushButton_198.setStyleSheet("")
+        self.pushButton_198.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
         self.pushButton_198.setText("")
         self.pushButton_198.setObjectName("pushButton_198")
         self.label_163 = QtWidgets.QLabel(self.groupBox_16)
-        self.label_163.setGeometry(QtCore.QRect(400, 20, 91, 16))
+        self.label_163.setGeometry(QtCore.QRect(400, 20, 71, 16))
         self.label_163.setObjectName("label_163")
         self.pushButton_199 = QtWidgets.QPushButton(self.groupBox_16)
         self.pushButton_199.setGeometry(QtCore.QRect(640, 10, 30, 30))
-        self.pushButton_199.setStyleSheet("")
+        self.pushButton_199.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
         self.pushButton_199.setText("")
         self.pushButton_199.setObjectName("pushButton_199")
         self.tabWidget.addTab(self.tab_3, "")
-        self.groupBox_31 = QtWidgets.QGroupBox(Dialog)
-        self.groupBox_31.setGeometry(QtCore.QRect(660, 10, 371, 80))
+        self.tab_4 = QtWidgets.QWidget()
+        self.tab_4.setObjectName("tab_4")
+        self.groupBox_31 = QtWidgets.QGroupBox(self.tab_4)
+        self.groupBox_31.setGeometry(QtCore.QRect(10, 20, 511, 61))
         self.groupBox_31.setObjectName("groupBox_31")
-        self.pushButton_68 = QtWidgets.QPushButton(self.groupBox_31)
-        self.pushButton_68.setGeometry(QtCore.QRect(20, 20, 121, 31))
-        self.pushButton_68.setObjectName("pushButton_68")
-        self.pushButton_69 = QtWidgets.QPushButton(self.groupBox_31)
-        self.pushButton_69.setGeometry(QtCore.QRect(180, 20, 121, 31))
-        self.pushButton_69.setObjectName("pushButton_69")
+        self.label_189 = QtWidgets.QLabel(self.groupBox_31)
+        self.label_189.setGeometry(QtCore.QRect(70, 30, 91, 16))
+        self.label_189.setObjectName("label_189")
+        self.pushButton_227 = QtWidgets.QPushButton(self.groupBox_31)
+        self.pushButton_227.setGeometry(QtCore.QRect(150, 20, 30, 30))
+        self.pushButton_227.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
+        self.pushButton_227.setText("")
+        self.pushButton_227.setObjectName("pushButton_227")
+        self.pushButton_228 = QtWidgets.QPushButton(self.groupBox_31)
+        self.pushButton_228.setGeometry(QtCore.QRect(310, 20, 30, 30))
+        self.pushButton_228.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
+        self.pushButton_228.setText("")
+        self.pushButton_228.setObjectName("pushButton_228")
+        self.label_190 = QtWidgets.QLabel(self.groupBox_31)
+        self.label_190.setGeometry(QtCore.QRect(210, 30, 101, 16))
+        self.label_190.setObjectName("label_190")
+        self.label_191 = QtWidgets.QLabel(self.groupBox_31)
+        self.label_191.setGeometry(QtCore.QRect(370, 30, 41, 21))
+        self.label_191.setObjectName("label_191")
+        self.label_192 = QtWidgets.QLabel(self.groupBox_31)
+        self.label_192.setGeometry(QtCore.QRect(430, 30, 21, 21))
+        self.label_192.setObjectName("label_192")
+        self.groupBox_32 = QtWidgets.QGroupBox(self.tab_4)
+        self.groupBox_32.setGeometry(QtCore.QRect(10, 80, 511, 61))
+        self.groupBox_32.setObjectName("groupBox_32")
+        self.label_194 = QtWidgets.QLabel(self.groupBox_32)
+        self.label_194.setGeometry(QtCore.QRect(210, 20, 121, 16))
+        self.label_194.setObjectName("label_194")
+        self.pushButton_232 = QtWidgets.QPushButton(self.groupBox_32)
+        self.pushButton_232.setGeometry(QtCore.QRect(310, 10, 30, 30))
+        self.pushButton_232.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
+        self.pushButton_232.setText("")
+        self.pushButton_232.setObjectName("pushButton_232")
+        self.pushButton_233 = QtWidgets.QPushButton(self.groupBox_32)
+        self.pushButton_233.setGeometry(QtCore.QRect(150, 10, 30, 30))
+        self.pushButton_233.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
+        self.pushButton_233.setText("")
+        self.pushButton_233.setObjectName("pushButton_233")
+        self.label_195 = QtWidgets.QLabel(self.groupBox_32)
+        self.label_195.setGeometry(QtCore.QRect(370, 20, 41, 21))
+        self.label_195.setObjectName("label_195")
+        self.label_196 = QtWidgets.QLabel(self.groupBox_32)
+        self.label_196.setGeometry(QtCore.QRect(430, 20, 21, 21))
+        self.label_196.setObjectName("label_196")
+        self.label_197 = QtWidgets.QLabel(self.groupBox_32)
+        self.label_197.setGeometry(QtCore.QRect(70, 20, 91, 16))
+        self.label_197.setObjectName("label_197")
+        self.groupBox_33 = QtWidgets.QGroupBox(self.tab_4)
+        self.groupBox_33.setGeometry(QtCore.QRect(10, 200, 511, 61))
+        self.groupBox_33.setObjectName("groupBox_33")
+        self.label_199 = QtWidgets.QLabel(self.groupBox_33)
+        self.label_199.setGeometry(QtCore.QRect(210, 20, 121, 16))
+        self.label_199.setObjectName("label_199")
+        self.label_200 = QtWidgets.QLabel(self.groupBox_33)
+        self.label_200.setGeometry(QtCore.QRect(70, 20, 91, 16))
+        self.label_200.setObjectName("label_200")
+        self.label_201 = QtWidgets.QLabel(self.groupBox_33)
+        self.label_201.setGeometry(QtCore.QRect(430, 20, 21, 21))
+        self.label_201.setObjectName("label_201")
+        self.label_202 = QtWidgets.QLabel(self.groupBox_33)
+        self.label_202.setGeometry(QtCore.QRect(370, 20, 41, 21))
+        self.label_202.setObjectName("label_202")
+        self.pushButton_238 = QtWidgets.QPushButton(self.groupBox_33)
+        self.pushButton_238.setGeometry(QtCore.QRect(150, 10, 30, 30))
+        self.pushButton_238.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
+        self.pushButton_238.setText("")
+        self.pushButton_238.setObjectName("pushButton_238")
+        self.pushButton_239 = QtWidgets.QPushButton(self.groupBox_33)
+        self.pushButton_239.setGeometry(QtCore.QRect(310, 10, 30, 30))
+        self.pushButton_239.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
+        self.pushButton_239.setText("")
+        self.pushButton_239.setObjectName("pushButton_239")
+        self.groupBox_34 = QtWidgets.QGroupBox(self.tab_4)
+        self.groupBox_34.setGeometry(QtCore.QRect(10, 140, 511, 61))
+        self.groupBox_34.setObjectName("groupBox_34")
+        self.pushButton_242 = QtWidgets.QPushButton(self.groupBox_34)
+        self.pushButton_242.setGeometry(QtCore.QRect(310, 10, 30, 30))
+        self.pushButton_242.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
+        self.pushButton_242.setText("")
+        self.pushButton_242.setObjectName("pushButton_242")
+        self.label_205 = QtWidgets.QLabel(self.groupBox_34)
+        self.label_205.setGeometry(QtCore.QRect(370, 20, 41, 21))
+        self.label_205.setObjectName("label_205")
+        self.label_206 = QtWidgets.QLabel(self.groupBox_34)
+        self.label_206.setGeometry(QtCore.QRect(430, 20, 21, 21))
+        self.label_206.setObjectName("label_206")
+        self.pushButton_244 = QtWidgets.QPushButton(self.groupBox_34)
+        self.pushButton_244.setGeometry(QtCore.QRect(150, 10, 30, 30))
+        self.pushButton_244.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
+        self.pushButton_244.setText("")
+        self.pushButton_244.setObjectName("pushButton_244")
+        self.label_207 = QtWidgets.QLabel(self.groupBox_34)
+        self.label_207.setGeometry(QtCore.QRect(70, 20, 91, 16))
+        self.label_207.setObjectName("label_207")
+        self.label_208 = QtWidgets.QLabel(self.groupBox_34)
+        self.label_208.setGeometry(QtCore.QRect(210, 20, 91, 16))
+        self.label_208.setObjectName("label_208")
+        self.groupBox_35 = QtWidgets.QGroupBox(self.tab_4)
+        self.groupBox_35.setGeometry(QtCore.QRect(10, 260, 511, 61))
+        self.groupBox_35.setObjectName("groupBox_35")
+        self.pushButton_247 = QtWidgets.QPushButton(self.groupBox_35)
+        self.pushButton_247.setGeometry(QtCore.QRect(310, 10, 30, 30))
+        self.pushButton_247.setStyleSheet("border-radius:15px;\n"
+"background-color:grey\n"
+";\n"
+"")
+        self.pushButton_247.setText("")
+        self.pushButton_247.setObjectName("pushButton_247")
+        self.label_209 = QtWidgets.QLabel(self.groupBox_35)
+        self.label_209.setGeometry(QtCore.QRect(70, 20, 91, 16))
+        self.label_209.setObjectName("label_209")
+        self.label_210 = QtWidgets.QLabel(self.groupBox_35)
+        self.label_210.setGeometry(QtCore.QRect(430, 20, 21, 21))
+        self.label_210.setObjectName("label_210")
+        self.label_211 = QtWidgets.QLabel(self.groupBox_35)
+        self.label_211.setGeometry(QtCore.QRect(370, 20, 41, 21))
+        self.label_211.setObjectName("label_211")
+        self.label_212 = QtWidgets.QLabel(self.groupBox_35)
+        self.label_212.setGeometry(QtCore.QRect(210, 20, 91, 16))
+        self.label_212.setObjectName("label_212")
+        self.pushButton_249 = QtWidgets.QPushButton(self.groupBox_35)
+        self.pushButton_249.setGeometry(QtCore.QRect(150, 10, 30, 30))
+        self.pushButton_249.setStyleSheet("border-radius:15px;\n"
+"background-color:grey;\n"
+"")
+        self.pushButton_249.setText("")
+        self.pushButton_249.setObjectName("pushButton_249")
+        self.tabWidget.addTab(self.tab_4, "")
         self.tabWidget.raise_()
         self.groupBox.raise_()
-        self.groupBox_31.raise_()
 
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(3)
         self.buttonBox.rejected.connect(Dialog.reject)
         self.buttonBox.accepted.connect(Dialog.accept)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -1792,7 +2065,29 @@ class Ui_Dialog(object):
         self.label_162.setText(_translate("Dialog", "Exp_id"))
         self.label_163.setText(_translate("Dialog", "Udp_RCV"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Dialog", "Auto Mode"))
-        self.groupBox_31.setTitle(_translate("Dialog", "Test_Group"))
-        self.pushButton_68.setText(_translate("Dialog", "Start_Udp_Send"))
-        self.pushButton_69.setText(_translate("Dialog", "Stop_Udp_Send"))
-
+        self.groupBox_31.setTitle(_translate("Dialog", "hs1"))
+        self.label_189.setText(_translate("Dialog", "Udp_Thread"))
+        self.label_190.setText(_translate("Dialog", "Datasae_Thread"))
+        self.label_191.setText(_translate("Dialog", "Exp_id"))
+        self.label_192.setText(_translate("Dialog", "0"))
+        self.groupBox_32.setTitle(_translate("Dialog", "hs2"))
+        self.label_194.setText(_translate("Dialog", "Datasae_Thread"))
+        self.label_195.setText(_translate("Dialog", "Exp_id"))
+        self.label_196.setText(_translate("Dialog", "0"))
+        self.label_197.setText(_translate("Dialog", "Udp_Thread"))
+        self.groupBox_33.setTitle(_translate("Dialog", "hs4"))
+        self.label_199.setText(_translate("Dialog", "Datasae_Thread"))
+        self.label_200.setText(_translate("Dialog", "Udp_Thread"))
+        self.label_201.setText(_translate("Dialog", "0"))
+        self.label_202.setText(_translate("Dialog", "Exp_id"))
+        self.groupBox_34.setTitle(_translate("Dialog", "hs3"))
+        self.label_205.setText(_translate("Dialog", "Exp_id"))
+        self.label_206.setText(_translate("Dialog", "0"))
+        self.label_207.setText(_translate("Dialog", "Udp_Thread"))
+        self.label_208.setText(_translate("Dialog", "Datasae_Thread"))
+        self.groupBox_35.setTitle(_translate("Dialog", "hs5"))
+        self.label_209.setText(_translate("Dialog", "Udp_Thread"))
+        self.label_210.setText(_translate("Dialog", "0"))
+        self.label_211.setText(_translate("Dialog", "Exp_id"))
+        self.label_212.setText(_translate("Dialog", "Datasae_Thread"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("Dialog", "hs_board_monitor"))

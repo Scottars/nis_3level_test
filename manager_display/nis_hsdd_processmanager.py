@@ -67,8 +67,8 @@ class ChildDialogWin2(QDialog,process_manager.Ui_Dialog):
 
         self.pushButton_15.clicked.connect(self.set_exp_id)
 
-        self.pushButton_68.clicked.connect(self.start_udp_send)
-        self.pushButton_69.clicked.connect(self.stop_udp_send)
+        # self.pushButton_68.clicked.connect(self.start_udp_send)
+        # self.pushButton_69.clicked.connect(self.stop_udp_send)
 
 
         ####################### Debug Mode ####################
@@ -123,141 +123,206 @@ class ChildDialogWin2(QDialog,process_manager.Ui_Dialog):
     def initilization(self):
         self.context = zmq.Context()
 
-        self.level1_udp_manage = self.context.socket(zmq.PUB)
-        self.level1_udp_manageaddr = 'tcp://192.168.100.99:7878'
-        self.level1_udp_manage.bind(self.level1_udp_manageaddr)
+        # self.level1_udp_manage = self.context.socket(zmq.PUB)
+        # self.level1_udp_manageaddr = 'tcp://192.168.100.99:7878'
+        # self.level1_udp_manage.bind(self.level1_udp_manageaddr)
+        #
+        # #水冷
+        # self.level_2_req_01 = self.context.socket(zmq.REQ)
+        # self.level_2_req_01addr =  nis_hsdd_configfile.level_2_01_watercool_req_addr
+        # self.level_2_req_01.setsockopt(zmq.RCVTIMEO,1000) #  设定超时时间为5s
+        # self.level_2_req_01.setsockopt(zmq.SNDTIMEO,1000) #  设定超时时间为5s
+        # self.level_2_req_01.connect(self.level_2_req_01addr)
+        #
+        #
+        # self.level_3_req_01 = self.context.socket(zmq.REQ)
+        # self.level_3_req_01addr = nis_hsdd_configfile.level_3_01_watercool_req_addr
+        # self.level_3_req_01.connect(self.level_3_req_01addr)
+        # self.level_3_req_01.setsockopt(zmq.RCVTIMEO, 100)
+        # self.level_3_req_01.setsockopt(zmq.SNDTIMEO, 100)
+        #
+        #
+        # #铯炉
+        # self.level_2_req_02 = self.context.socket(zmq.REQ)
+        # self.level_2_req_02addr =  nis_hsdd_configfile.level_2_02_cefurance_req_addr
+        # self.level_2_req_02.setsockopt(zmq.RCVTIMEO,1000) #  设定超时时间为5s
+        # self.level_2_req_02.setsockopt(zmq.SNDTIMEO,1000) #  设定超时时间为5s
+        # self.level_2_req_02.connect(self.level_2_req_02addr)
+        #
+        #
+        # self.level_3_req_02 = self.context.socket(zmq.REQ)
+        # self.level_3_req_02addr = nis_hsdd_configfile.level_3_02_cefurance_req_addr
+        # self.level_3_req_02.connect(self.level_3_req_02addr)
+        # self.level_3_req_02.setsockopt(zmq.RCVTIMEO, 100)
+        # self.level_3_req_02.setsockopt(zmq.SNDTIMEO, 100)
+        #
+        #
+        # #供气监测
+        # self.level_2_req_03 = self.context.socket(zmq.REQ)
+        # self.level_2_req_03addr =  nis_hsdd_configfile.level_2_03_gascontrol_req_addr
+        # self.level_2_req_03.connect(self.level_2_req_03addr)
+        # self.level_2_req_03.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
+        # self.level_2_req_03.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
+        #
+        # self.level_3_req_03 = self.context.socket(zmq.REQ)
+        # self.level_3_req_03addr = nis_hsdd_configfile.level_3_03_gascontrol_req_addr
+        # self.level_3_req_03.connect(self.level_3_req_03addr)
+        # self.level_3_req_03.setsockopt(zmq.RCVTIMEO,100)
+        # self.level_3_req_03.setsockopt(zmq.SNDTIMEO,100)
+        #
+        #
+        # #pg m power 磁场电源
+        # self.level_2_req_04 = self.context.socket(zmq.REQ)
+        # self.level_2_req_04addr =  nis_hsdd_configfile.level_2_04_pgmpower_req_addr
+        # self.level_2_req_04.connect(self.level_2_req_04addr)
+        # self.level_2_req_04.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
+        # self.level_2_req_04.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
+        #
+        # self.level_3_req_04 = self.context.socket(zmq.REQ)
+        # self.level_3_req_04addr = nis_hsdd_configfile.level_3_04_pgmpower_req_addr
+        # self.level_3_req_04.connect(self.level_3_req_04addr)
+        # self.level_3_req_04.setsockopt(zmq.RCVTIMEO,100)
+        # self.level_3_req_04.setsockopt(zmq.SNDTIMEO,100)
+        #
+        # #灯丝电源  filement power
+        # self.level_2_req_05 = self.context.socket(zmq.REQ)
+        # self.level_2_req_05addr =  nis_hsdd_configfile.level_2_05_filmentpower_req_addr
+        # self.level_2_req_05.connect(self.level_2_req_05addr)
+        # self.level_2_req_05.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
+        # self.level_2_req_05.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
+        #
+        # self.level_3_req_05 = self.context.socket(zmq.REQ)
+        # self.level_3_req_05addr = nis_hsdd_configfile.level_3_05_filmentpower_req_addr
+        # self.level_3_req_05.connect(self.level_3_req_05addr)
+        # self.level_3_req_05.setsockopt(zmq.RCVTIMEO,100)
+        # self.level_3_req_05.setsockopt(zmq.SNDTIMEO,100)
+        #
+        #
+        # #rfpower、
+        # self.level_2_req_06 = self.context.socket(zmq.REQ)
+        # self.level_2_req_06addr =  nis_hsdd_configfile.level_2_06_filmentpower_req_addr
+        # self.level_2_req_06.connect(self.level_2_req_06addr)
+        # self.level_2_req_06.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
+        # self.level_2_req_06.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
+        #
+        # self.level_3_req_06 = self.context.socket(zmq.REQ)
+        # self.level_3_req_06addr = nis_hsdd_configfile.level_3_06_filmentpower_req_addr
+        # self.level_3_req_06.connect(self.level_3_req_06addr)
+        # self.level_3_req_06.setsockopt(zmq.RCVTIMEO,100)
+        # self.level_3_req_06.setsockopt(zmq.SNDTIMEO,100)
+        # # pg power
+        # self.level_2_req_07 = self.context.socket(zmq.REQ)
+        # self.level_2_req_07addr =  nis_hsdd_configfile.level_2_07_pgpower_req_addr
+        # self.level_2_req_07.connect(self.level_2_req_07addr)
+        # self.level_2_req_07.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
+        # self.level_2_req_07.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
+        #
+        # self.level_3_req_07 = self.context.socket(zmq.REQ)
+        # self.level_3_req_07addr = nis_hsdd_configfile.level_3_07_pgpower_req_addr
+        # self.level_3_req_07.connect(self.level_3_req_07addr)
+        # self.level_3_req_07.setsockopt(zmq.RCVTIMEO,100)
+        # self.level_3_req_07.setsockopt(zmq.SNDTIMEO,100)
+        #
+        #
+        # # 引出电源 eg power
+        # self.level_2_req_08 = self.context.socket(zmq.REQ)
+        # self.level_2_req_08addr =  nis_hsdd_configfile.level_2_08_egpower_req_addr
+        # self.level_2_req_08.connect(self.level_2_req_08addr)
+        # self.level_2_req_08.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
+        # self.level_2_req_08.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
+        #
+        # self.level_3_req_08 = self.context.socket(zmq.REQ)
+        # self.level_3_req_08addr = nis_hsdd_configfile.level_3_08_egpower_req_addr
+        # self.level_3_req_08.connect(self.level_3_req_08addr)
+        # self.level_3_req_08.setsockopt(zmq.RCVTIMEO,100)
+        # self.level_3_req_08.setsockopt(zmq.SNDTIMEO,100)
+        #
+        # #  热量计， 16路
+        # self.level_2_req_09 = self.context.socket(zmq.REQ)
+        # self.level_2_req_09addr = nis_hsdd_configfile.level_2_09_heatmeter_req_addr
+        # self.level_2_req_09.connect(self.level_2_req_09addr)
+        # self.level_2_req_09.setsockopt(zmq.RCVTIMEO, 100)  # 设定超时时间为5s
+        # self.level_2_req_09.setsockopt(zmq.SNDTIMEO, 100)  # 设定超时时间为5s
+        #
+        # self.level_3_req_09 = self.context.socket(zmq.REQ)
+        # self.level_3_req_09addr = nis_hsdd_configfile.level_3_09_heatmeter_req_addr
+        # self.level_3_req_09.connect(self.level_3_req_09addr)
+        # self.level_3_req_09.setsockopt(zmq.RCVTIMEO, 100)
+        # self.level_3_req_09.setsockopt(zmq.SNDTIMEO, 100)
+        #
+        # # pararead
+        # self.level_3_req_pararead = self.context.socket(zmq.REQ)
+        # self.level_3_req_parareadaddr = nis_hsdd_configfile.level_3_para_read_req_addr
+        # self.level_3_req_pararead.bind(self.level_3_req_parareadaddr)
+        # self.level_3_req_pararead.setsockopt(zmq.RCVTIMEO,100)
+        # self.level_3_req_pararead.setsockopt(zmq.SNDTIMEO,100)
 
-        #水冷
-        self.level_2_req_01 = self.context.socket(zmq.REQ)
-        self.level_2_req_01addr =  nis_hsdd_configfile.level_2_01_watercool_req_addr
-        self.level_2_req_01.setsockopt(zmq.RCVTIMEO,1000) #  设定超时时间为5s
-        self.level_2_req_01.setsockopt(zmq.SNDTIMEO,1000) #  设定超时时间为5s
-        self.level_2_req_01.connect(self.level_2_req_01addr)
 
 
-        self.level_3_req_01 = self.context.socket(zmq.REQ)
-        self.level_3_req_01addr = nis_hsdd_configfile.level_3_01_watercool_req_addr
-        self.level_3_req_01.connect(self.level_3_req_01addr)
-        self.level_3_req_01.setsockopt(zmq.RCVTIMEO, 100)
-        self.level_3_req_01.setsockopt(zmq.SNDTIMEO, 100)
+        #hs1 level2
+        self.level2_hs1_req = self.context.socket(zmq.REQ)
+        self.level2_hs1_req_addr = nis_hsdd_configfile.level2_hs1_req_addr
+        self.level2_hs1_req.connect(self.level2_hs1_req_addr)
+        self.level2_hs1_req.setsockopt(zmq.RCVTIMEO,100)
+        self.level2_hs1_req.setsockopt(zmq.SNDTIMEO,100)
+
+        # hs2 level2
+        self.level2_hs2_req = self.context.socket(zmq.REQ)
+        self.level2_hs2_req_addr = nis_hsdd_configfile.level2_hs2_req_addr
+        self.level2_hs2_req.connect(self.level2_hs2_req_addr)
+        self.level2_hs2_req.setsockopt(zmq.RCVTIMEO, 100)
+        self.level2_hs2_req.setsockopt(zmq.SNDTIMEO, 100)
+        # hs3 level2
+        self.level2_hs3_req = self.context.socket(zmq.REQ)
+        self.level2_hs3_req_addr = nis_hsdd_configfile.level2_hs3_req_addr
+        self.level2_hs3_req.connect(self.level2_hs3_req_addr)
+        self.level2_hs3_req.setsockopt(zmq.RCVTIMEO, 100)
+        self.level2_hs3_req.setsockopt(zmq.SNDTIMEO, 100)
+        # hs4 level2
+        self.level2_hs4_req = self.context.socket(zmq.REQ)
+        self.level2_hs4_req_addr = nis_hsdd_configfile.level2_hs4_req_addr
+        self.level2_hs4_req.connect(self.level2_hs4_req_addr)
+        self.level2_hs4_req.setsockopt(zmq.RCVTIMEO, 100)
+        self.level2_hs4_req.setsockopt(zmq.SNDTIMEO, 100)
+        # hs5 level2
+        self.level2_hs5_req = self.context.socket(zmq.REQ)
+        self.level2_hs5_req_addr = nis_hsdd_configfile.level2_hs5_req_addr
+        self.level2_hs5_req.connect(self.level2_hs5_req_addr)
+        self.level2_hs5_req.setsockopt(zmq.RCVTIMEO, 100)
+        self.level2_hs5_req.setsockopt(zmq.SNDTIMEO, 100)
 
 
-        #铯炉
-        self.level_2_req_02 = self.context.socket(zmq.REQ)
-        self.level_2_req_02addr =  nis_hsdd_configfile.level_2_02_cefurance_req_addr
-        self.level_2_req_02.setsockopt(zmq.RCVTIMEO,1000) #  设定超时时间为5s
-        self.level_2_req_02.setsockopt(zmq.SNDTIMEO,1000) #  设定超时时间为5s
-        self.level_2_req_02.connect(self.level_2_req_02addr)
+        #hs1 level2
+        self.level3_hs1_req = self.context.socket(zmq.REQ)
+        self.level3_hs1_req_addr = nis_hsdd_configfile.level3_hs1_req_addr
+        self.level3_hs1_req.connect(self.level3_hs1_req_addr)
+        self.level3_hs1_req.setsockopt(zmq.RCVTIMEO,100)
+        self.level3_hs1_req.setsockopt(zmq.SNDTIMEO,100)
 
-
-        self.level_3_req_02 = self.context.socket(zmq.REQ)
-        self.level_3_req_02addr = nis_hsdd_configfile.level_3_02_cefurance_req_addr
-        self.level_3_req_02.connect(self.level_3_req_02addr)
-        self.level_3_req_02.setsockopt(zmq.RCVTIMEO, 100)
-        self.level_3_req_02.setsockopt(zmq.SNDTIMEO, 100)
-
-
-        #供气监测
-        self.level_2_req_03 = self.context.socket(zmq.REQ)
-        self.level_2_req_03addr =  nis_hsdd_configfile.level_2_03_gascontrol_req_addr
-        self.level_2_req_03.connect(self.level_2_req_03addr)
-        self.level_2_req_03.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
-        self.level_2_req_03.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
-
-        self.level_3_req_03 = self.context.socket(zmq.REQ)
-        self.level_3_req_03addr = nis_hsdd_configfile.level_3_03_gascontrol_req_addr
-        self.level_3_req_03.connect(self.level_3_req_03addr)
-        self.level_3_req_03.setsockopt(zmq.RCVTIMEO,100)
-        self.level_3_req_03.setsockopt(zmq.SNDTIMEO,100)
-
-
-        #pg m power 磁场电源
-        self.level_2_req_04 = self.context.socket(zmq.REQ)
-        self.level_2_req_04addr =  nis_hsdd_configfile.level_2_04_pgmpower_req_addr
-        self.level_2_req_04.connect(self.level_2_req_04addr)
-        self.level_2_req_04.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
-        self.level_2_req_04.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
-
-        self.level_3_req_04 = self.context.socket(zmq.REQ)
-        self.level_3_req_04addr = nis_hsdd_configfile.level_3_04_pgmpower_req_addr
-        self.level_3_req_04.connect(self.level_3_req_04addr)
-        self.level_3_req_04.setsockopt(zmq.RCVTIMEO,100)
-        self.level_3_req_04.setsockopt(zmq.SNDTIMEO,100)
-
-        #灯丝电源  filement power
-        self.level_2_req_05 = self.context.socket(zmq.REQ)
-        self.level_2_req_05addr =  nis_hsdd_configfile.level_2_05_filmentpower_req_addr
-        self.level_2_req_05.connect(self.level_2_req_05addr)
-        self.level_2_req_05.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
-        self.level_2_req_05.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
-
-        self.level_3_req_05 = self.context.socket(zmq.REQ)
-        self.level_3_req_05addr = nis_hsdd_configfile.level_3_05_filmentpower_req_addr
-        self.level_3_req_05.connect(self.level_3_req_05addr)
-        self.level_3_req_05.setsockopt(zmq.RCVTIMEO,100)
-        self.level_3_req_05.setsockopt(zmq.SNDTIMEO,100)
-
-
-        #rfpower、
-        self.level_2_req_06 = self.context.socket(zmq.REQ)
-        self.level_2_req_06addr =  nis_hsdd_configfile.level_2_06_filmentpower_req_addr
-        self.level_2_req_06.connect(self.level_2_req_06addr)
-        self.level_2_req_06.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
-        self.level_2_req_06.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
-
-        self.level_3_req_06 = self.context.socket(zmq.REQ)
-        self.level_3_req_06addr = nis_hsdd_configfile.level_3_06_filmentpower_req_addr
-        self.level_3_req_06.connect(self.level_3_req_06addr)
-        self.level_3_req_06.setsockopt(zmq.RCVTIMEO,100)
-        self.level_3_req_06.setsockopt(zmq.SNDTIMEO,100)
-        # pg power
-        self.level_2_req_07 = self.context.socket(zmq.REQ)
-        self.level_2_req_07addr =  nis_hsdd_configfile.level_2_07_pgpower_req_addr
-        self.level_2_req_07.connect(self.level_2_req_07addr)
-        self.level_2_req_07.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
-        self.level_2_req_07.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
-
-        self.level_3_req_07 = self.context.socket(zmq.REQ)
-        self.level_3_req_07addr = nis_hsdd_configfile.level_3_07_pgpower_req_addr
-        self.level_3_req_07.connect(self.level_3_req_07addr)
-        self.level_3_req_07.setsockopt(zmq.RCVTIMEO,100)
-        self.level_3_req_07.setsockopt(zmq.SNDTIMEO,100)
-
-
-        # 引出电源 eg power
-        self.level_2_req_08 = self.context.socket(zmq.REQ)
-        self.level_2_req_08addr =  nis_hsdd_configfile.level_2_08_egpower_req_addr
-        self.level_2_req_08.connect(self.level_2_req_08addr)
-        self.level_2_req_08.setsockopt(zmq.RCVTIMEO,100) #  设定超时时间为5s
-        self.level_2_req_08.setsockopt(zmq.SNDTIMEO,100) #  设定超时时间为5s
-
-        self.level_3_req_08 = self.context.socket(zmq.REQ)
-        self.level_3_req_08addr = nis_hsdd_configfile.level_3_08_egpower_req_addr
-        self.level_3_req_08.connect(self.level_3_req_08addr)
-        self.level_3_req_08.setsockopt(zmq.RCVTIMEO,100)
-        self.level_3_req_08.setsockopt(zmq.SNDTIMEO,100)
-
-        #  热量计， 16路
-        self.level_2_req_09 = self.context.socket(zmq.REQ)
-        self.level_2_req_09addr = nis_hsdd_configfile.level_2_09_heatmeter_req_addr
-        self.level_2_req_09.connect(self.level_2_req_09addr)
-        self.level_2_req_09.setsockopt(zmq.RCVTIMEO, 100)  # 设定超时时间为5s
-        self.level_2_req_09.setsockopt(zmq.SNDTIMEO, 100)  # 设定超时时间为5s
-
-        self.level_3_req_09 = self.context.socket(zmq.REQ)
-        self.level_3_req_09addr = nis_hsdd_configfile.level_3_09_heatmeter_req_addr
-        self.level_3_req_09.connect(self.level_3_req_09addr)
-        self.level_3_req_09.setsockopt(zmq.RCVTIMEO, 100)
-        self.level_3_req_09.setsockopt(zmq.SNDTIMEO, 100)
-
-        # pararead
-        self.level_3_req_pararead = self.context.socket(zmq.REQ)
-        self.level_3_req_parareadaddr = nis_hsdd_configfile.level_3_para_read_req_addr
-        self.level_3_req_pararead.bind(self.level_3_req_parareadaddr)
-        self.level_3_req_pararead.setsockopt(zmq.RCVTIMEO,100)
-        self.level_3_req_pararead.setsockopt(zmq.SNDTIMEO,100)
-
-
+        # hs2 level3
+        self.level3_hs2_req = self.context.socket(zmq.REQ)
+        self.level3_hs2_req_addr = nis_hsdd_configfile.level3_hs2_req_addr
+        self.level3_hs2_req.connect(self.level3_hs2_req_addr)
+        self.level3_hs2_req.setsockopt(zmq.RCVTIMEO, 100)
+        self.level3_hs2_req.setsockopt(zmq.SNDTIMEO, 100)
+        # hs3 level3
+        self.level3_hs3_req = self.context.socket(zmq.REQ)
+        self.level3_hs3_req_addr = nis_hsdd_configfile.level3_hs3_req_addr
+        self.level3_hs3_req.connect(self.level3_hs3_req_addr)
+        self.level3_hs3_req.setsockopt(zmq.RCVTIMEO, 100)
+        self.level3_hs3_req.setsockopt(zmq.SNDTIMEO, 100)
+        # hs4 level3
+        self.level3_hs4_req = self.context.socket(zmq.REQ)
+        self.level3_hs4_req_addr = nis_hsdd_configfile.level3_hs4_req_addr
+        self.level3_hs4_req.connect(self.level3_hs4_req_addr)
+        self.level3_hs4_req.setsockopt(zmq.RCVTIMEO, 100)
+        self.level3_hs4_req.setsockopt(zmq.SNDTIMEO, 100)
+        # hs5 level3
+        self.level3_hs5_req = self.context.socket(zmq.REQ)
+        self.level3_hs5_req_addr = nis_hsdd_configfile.level3_hs5_req_addr
+        self.level3_hs5_req.connect(self.level3_hs5_req_addr)
+        self.level3_hs5_req.setsockopt(zmq.RCVTIMEO, 100)
+        self.level3_hs5_req.setsockopt(zmq.SNDTIMEO, 100)
 
 
         ## Start epics tcp server thread
@@ -683,6 +748,193 @@ class ChildDialogWin2(QDialog,process_manager.Ui_Dialog):
         self.flag_monitor = False
         time.sleep(1)
         stop_thread(self.process_monitor_thread)
+
+    def hs_process_monitor(self):
+        print('start hs process monitor ')
+        # self.flag_monitor = True
+        # while True:
+        #     if self.flag_monitor:
+                # time.sleep(1)
+        print("###########分割线################")
+        ####################level 2  ##################################
+        # level 2 hs1
+        try:
+            self.level2_hs1_req.send(b'udp alive?')
+        except:
+            print('level 2 hs1: sendtime out')
+        try:
+            x = self.level2_hs1_req.recv()
+            if x == b'udp yes':
+                self.pushButton_227.setStyleSheet("QPushButton{border-radius:15px;background-color:green}")
+
+            else:
+                self.pushButton_227.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+
+        except:
+            self.pushButton_227.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+
+            print('level 2 hs1: udp not online')
+        app.processEvents()
+        # level 2 hs2
+        try:
+            self.level2_hs2_req.send(b'udp alive?')
+        except:
+            print('level 2 hs2: sendtime out')
+        try:
+            x = self.level2_hs2_req.recv()
+            if x == b'udp yes':
+                self.pushButton_233.setStyleSheet("QPushButton{border-radius:15px;background-color:green}")
+
+            else:
+                self.pushButton_233.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+        except:
+            self.pushButton_233.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+            print('level 2 hs2: udp not online')
+        app.processEvents()
+        # level 2 hs3
+        try:
+            self.level2_hs3_req.send(b'udp alive?')
+        except:
+            print('level 2 hs3: sendtime out')
+        try:
+            x = self.level2_hs3_req.recv()
+            if x == b'udp yes':
+                self.pushButton_244.setStyleSheet("QPushButton{border-radius:15px;background-color:green}")
+            else:
+                self.pushButton_244.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+        except:
+            self.pushButton_244.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+            print('level 2 hs3: udp not online')
+        app.processEvents()
+        # level 2 hs4
+        try:
+            self.level2_hs4_req.send(b'udp alive?')
+        except:
+            print('level 2 hs4: sendtime out')
+        try:
+            x = self.level2_hs4_req.recv()
+            if x == b'udp yes':
+                self.pushButton_238.setStyleSheet("QPushButton{border-radius:15px;background-color:green}")
+
+            else:
+                self.pushButton_238.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+
+        except:
+            self.pushButton_238.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+
+            print('level 2 hs4: udp not online')
+        app.processEvents()
+        # level 2 hs5
+        try:
+            self.level2_hs5_req.send(b'udp alive?')
+        except:
+            print('level 2 hs5: sendtime out')
+        try:
+            x = self.level2_hs5_req.recv()
+            if x == b'udp yes':
+                self.pushButton_249.setStyleSheet("QPushButton{border-radius:15px;background-color:green}")
+
+            else:
+                self.pushButton_249.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+
+        except:
+            self.pushButton_249.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+
+            print('level 2 hs5: udp not online')
+        app.processEvents()
+
+        #########level 3  ###############################
+        # hs1  level3
+        try:
+            self.level3_hs1_req.send(b'process alive?')
+        except:
+            print('level 3 hs1: sendtime out')
+        try:
+            x = self.level3_hs1_req.recv()
+            if x == b'process yes':
+                self.pushButton_228.setStyleSheet("QPushButton{border-radius:15px;background-color:green}")
+            else:
+                self.pushButton_228.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+        except:
+            self.pushButton_228.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+            print('level 3 hs1: process not online')
+        app.processEvents()
+        # hs2  level3
+        try:
+            self.level3_hs2_req.send(b'process alive?')
+        except:
+            print('level 3 hs2: sendtime out')
+        try:
+            x = self.level3_hs2_req.recv()
+            if x == b'process yes':
+                self.pushButton_232.setStyleSheet("QPushButton{border-radius:15px;background-color:green}")
+            else:
+                self.pushButton_232.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+        except:
+            self.pushButton_232.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+            print('level 3 hs2: process not online')
+        app.processEvents()
+        # hs3  level3
+        try:
+            self.level3_hs3_req.send(b'process alive?')
+        except:
+            print('level 3 hs3: sendtime out')
+        try:
+            x = self.level3_hs3_req.recv()
+            if x == b'process yes':
+                self.pushButton_242.setStyleSheet("QPushButton{border-radius:15px;background-color:green}")
+            else:
+                self.pushButton_242.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+        except:
+            self.pushButton_242.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+            print('level 3 hs3: process not online')
+        app.processEvents()
+        # hs4  level3
+        try:
+            self.level3_hs4_req.send(b'process alive?')
+        except:
+            print('level 3 hs4: sendtime out')
+        try:
+            x = self.level3_hs4_req.recv()
+            if x == b'process yes':
+                self.pushButton_239.setStyleSheet("QPushButton{border-radius:15px;background-color:green}")
+            else:
+                self.pushButton_239.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+        except:
+            self.pushButton_239.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+            print('level 3 hs4: process not online')
+        app.processEvents()
+        # hs5  level3
+        try:
+            self.level3_hs5_req.send(b'process alive?')
+        except:
+            print('level 3 hs5: sendtime out')
+        try:
+            x = self.level3_hs5_req.recv()
+            if x == b'process yes':
+                self.pushButton_247.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+            else:
+                self.pushButton_247.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+        except:
+            self.pushButton_247.setStyleSheet("QPushButton{border-radius:15px;background-color:grey}")
+
+            print('level 3 hs5: process not online')
+        app.processEvents()
+
+    def start_hs_process_monitor(self):
+        print('we have start udp update process')
+        # self.process_monitor_thread = threading.Thread(target=self.process_monitor)
+        # self.process_monitor_thread.start()
+        self.hsprocesstimer = QtCore.QTimer()
+        self.hsprocesstimer.timeout.connect(self.hs_process_monitor)
+        self.hsprocesstimer.start(1000)
+
+    def stop_hs_process_monitor(self):
+        print('we have stoppend update udp process ')
+        self.hsprocesstimer.stop()
+        # self.flag_monitor = False
+        # time.sleep(1)
+        # stop_thread(self.hs_process_monitor)
 
     def menu_start_level_2_01_udp(self):
         try:

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1413</width>
-    <height>922</height>
+    <width>1124</width>
+    <height>857</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>0</x>
      <y>20</y>
-     <width>621</width>
+     <width>651</width>
      <height>61</height>
     </rect>
    </property>
@@ -104,14 +104,14 @@
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>90</y>
-     <width>1111</width>
-     <height>731</height>
+     <x>10</x>
+     <y>80</y>
+     <width>1081</width>
+     <height>761</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -2178,7 +2178,9 @@ background-color:grey
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2194,7 +2196,10 @@ background-color:grey
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2205,7 +2210,7 @@ background-color:grey
        <rect>
         <x>540</x>
         <y>30</y>
-        <width>121</width>
+        <width>81</width>
         <height>16</height>
        </rect>
       </property>
@@ -2262,7 +2267,9 @@ background-color:grey
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2426,7 +2433,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2442,7 +2452,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2484,7 +2496,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2495,7 +2509,7 @@ background-color:grey;
        <rect>
         <x>260</x>
         <y>30</y>
-        <width>61</width>
+        <width>91</width>
         <height>16</height>
        </rect>
       </property>
@@ -2508,7 +2522,7 @@ background-color:grey;
        <rect>
         <x>400</x>
         <y>30</y>
-        <width>91</width>
+        <width>51</width>
         <height>16</height>
        </rect>
       </property>
@@ -2565,7 +2579,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2607,7 +2624,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2636,7 +2655,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2756,7 +2777,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2785,7 +2808,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2814,7 +2839,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2869,7 +2897,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2911,7 +2942,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2953,7 +2986,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3034,7 +3069,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3063,7 +3100,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3118,7 +3158,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3173,7 +3215,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3215,7 +3260,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3244,7 +3291,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3325,7 +3374,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3367,7 +3419,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3396,7 +3450,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3490,7 +3546,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3532,7 +3591,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3561,7 +3622,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3679,7 +3742,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3782,7 +3847,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3824,7 +3892,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3853,7 +3923,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3953,7 +4025,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -3969,7 +4044,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4011,7 +4088,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4111,7 +4190,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4127,7 +4208,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4195,7 +4279,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4269,7 +4355,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4311,7 +4400,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4340,7 +4431,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4414,7 +4507,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4456,7 +4552,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4485,7 +4583,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4572,7 +4672,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4614,7 +4717,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4643,7 +4748,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4654,7 +4761,7 @@ background-color:grey;
        <rect>
         <x>260</x>
         <y>30</y>
-        <width>71</width>
+        <width>91</width>
         <height>16</height>
        </rect>
       </property>
@@ -4743,7 +4850,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4772,7 +4881,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4827,7 +4939,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4888,7 +5002,10 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4930,7 +5047,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -4954,7 +5073,7 @@ background-color:grey;
        <rect>
         <x>540</x>
         <y>30</y>
-        <width>121</width>
+        <width>91</width>
         <height>16</height>
        </rect>
       </property>
@@ -4972,7 +5091,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -5085,7 +5206,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -5114,7 +5237,9 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -5125,7 +5250,7 @@ background-color:grey;
        <rect>
         <x>400</x>
         <y>20</y>
-        <width>91</width>
+        <width>71</width>
         <height>16</height>
        </rect>
       </property>
@@ -5143,7 +5268,525 @@ background-color:grey;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_4">
+    <attribute name="title">
+     <string>hs_board_monitor</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox_31">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>511</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>hs1</string>
+     </property>
+     <widget class="QLabel" name="label_189">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>30</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Udp_Thread</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_227">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>20</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_228">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>20</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_190">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>30</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Datasae_Thread</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_191">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>30</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Exp_id</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_192">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>30</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_32">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>511</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>hs2</string>
+     </property>
+     <widget class="QLabel" name="label_194">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>20</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Datasae_Thread</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_232">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_233">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_195">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>20</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Exp_id</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_196">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>20</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_197">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>20</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Udp_Thread</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_33">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>511</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>hs4</string>
+     </property>
+     <widget class="QLabel" name="label_199">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>20</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Datasae_Thread</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_200">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>20</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Udp_Thread</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_201">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>20</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_202">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>20</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Exp_id</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_238">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_239">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_34">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>511</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>hs3</string>
+     </property>
+     <widget class="QPushButton" name="pushButton_242">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_205">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>20</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Exp_id</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_206">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>20</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_244">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_207">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>20</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Udp_Thread</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_208">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>20</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Datasae_Thread</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_35">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>260</y>
+       <width>511</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>hs5</string>
+     </property>
+     <widget class="QPushButton" name="pushButton_247">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey
+;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_209">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>20</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Udp_Thread</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_210">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>20</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_211">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>20</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Exp_id</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_212">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>20</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Datasae_Thread</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_249">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:15px;
+background-color:grey;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -5152,48 +5795,8 @@ background-color:grey;
     </widget>
    </widget>
   </widget>
-  <widget class="QGroupBox" name="groupBox_31">
-   <property name="geometry">
-    <rect>
-     <x>660</x>
-     <y>10</y>
-     <width>371</width>
-     <height>80</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Test_Group</string>
-   </property>
-   <widget class="QPushButton" name="pushButton_68">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Start_Udp_Send</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_69">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>20</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Stop_Udp_Send</string>
-    </property>
-   </widget>
-  </widget>
   <zorder>tabWidget</zorder>
   <zorder>groupBox</zorder>
-  <zorder>groupBox_31</zorder>
  </widget>
  <tabstops>
   <tabstop>pushButton_4</tabstop>
