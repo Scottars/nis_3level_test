@@ -85,7 +85,7 @@ leadingoutpower_ui_intertal='10' #单位是ms
 
 
 hs1_sub_addr = 'tcp://192.168.100.64:10000'
-hs2_sub_addr = 'tcp://192.168.100.66:10001'
+hs2_sub_addr = 'tcp://192.168.100.65:10001'
 hs3_sub_addr = 'tcp://192.168.100.69:10002'
 hs4_sub_addr = 'tcp://192.168.100.67:10003'
 hs5_sub_addr = 'tcp://192.168.100.68:10004'
@@ -94,8 +94,8 @@ hs5_sub_addr = 'tcp://192.168.100.68:10004'
 
 level2_hs1_req_addr = 'tcp://192.168.100.64:9222'
 level3_hs1_req_addr = 'tcp://192.168.100.74:9333'
-level2_hs2_req_addr = 'tcp://192.168.100.66:9222'
-level3_hs2_req_addr = 'tcp://192.168.100.76:9333'
+level2_hs2_req_addr = 'tcp://192.168.100.65:9222'
+level3_hs2_req_addr = 'tcp://192.168.100.75:9333'
 level2_hs3_req_addr = 'tcp://192.168.100.69:9222'
 level3_hs3_req_addr = 'tcp://192.168.100.79:9333'
 level2_hs4_req_addr = 'tcp://192.168.100.67:9222'

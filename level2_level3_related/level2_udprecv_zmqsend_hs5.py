@@ -16,7 +16,7 @@ import time
 import socket
 import datetime
 import struct
-import  nis_hsdd_configfile
+from level2_level3_related import nis_hsdd_configfile
 HWM_VAL = 100000*60*31*5
 
 HWM_VAL = 10000000

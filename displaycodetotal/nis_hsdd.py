@@ -1,0 +1,101 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'nis_hsdd.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.0
+#
+# WARNING! All changes made in this file will be lost!
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(1878, 1011)
+        self.pushButton_8 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_8.setGeometry(QtCore.QRect(10, 20, 71, 21))
+        self.pushButton_8.setObjectName("pushButton_8")
+        self.radioButton = QtWidgets.QRadioButton(Dialog)
+        self.radioButton.setGeometry(QtCore.QRect(100, 20, 89, 16))
+        self.radioButton.setObjectName("radioButton")
+        self.radioButton_2 = QtWidgets.QRadioButton(Dialog)
+        self.radioButton_2.setGeometry(QtCore.QRect(200, 20, 89, 16))
+        self.radioButton_2.setObjectName("radioButton_2")
+        self.pushButton_43 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_43.setGeometry(QtCore.QRect(450, 10, 111, 31))
+        self.pushButton_43.setObjectName("pushButton_43")
+        self.pushButton_48 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_48.setGeometry(QtCore.QRect(330, 10, 111, 31))
+        self.pushButton_48.setObjectName("pushButton_48")
+        self.pushButton_49 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_49.setGeometry(QtCore.QRect(570, 10, 111, 31))
+        self.pushButton_49.setObjectName("pushButton_49")
+        self.pushButton_46 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_46.setGeometry(QtCore.QRect(810, 10, 111, 31))
+        self.pushButton_46.setObjectName("pushButton_46")
+        self.pushButton_47 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_47.setGeometry(QtCore.QRect(690, 10, 111, 31))
+        self.pushButton_47.setObjectName("pushButton_47")
+        self.spinBox = QtWidgets.QSpinBox(Dialog)
+        self.spinBox.setGeometry(QtCore.QRect(1060, 20, 61, 21))
+        self.spinBox.setPrefix("")
+        self.spinBox.setMinimum(0)
+        self.spinBox.setMaximum(1)
+        self.spinBox.setSingleStep(10)
+        self.spinBox.setProperty("value", 1)
+        self.spinBox.setObjectName("spinBox")
+        self.pushButton_58 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_58.setGeometry(QtCore.QRect(930, 10, 111, 31))
+        self.pushButton_58.setObjectName("pushButton_58")
+        self.gridLayoutWidget_17 = QtWidgets.QWidget(Dialog)
+        self.gridLayoutWidget_17.setGeometry(QtCore.QRect(0, 60, 1871, 951))
+        self.gridLayoutWidget_17.setObjectName("gridLayoutWidget_17")
+        self.gridLayout_9 = QtWidgets.QGridLayout(self.gridLayoutWidget_17)
+        self.gridLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_9.setObjectName("gridLayout_9")
+        self.graphicsView_26 = PlotWidget(self.gridLayoutWidget_17)
+        self.graphicsView_26.setObjectName("graphicsView_26")
+        self.gridLayout_9.addWidget(self.graphicsView_26, 2, 1, 1, 1)
+        self.graphicsView_25 = PlotWidget(self.gridLayoutWidget_17)
+        self.graphicsView_25.setObjectName("graphicsView_25")
+        self.gridLayout_9.addWidget(self.graphicsView_25, 2, 0, 1, 1)
+        self.graphicsView_27 = PlotWidget(self.gridLayoutWidget_17)
+        self.graphicsView_27.setObjectName("graphicsView_27")
+        self.gridLayout_9.addWidget(self.graphicsView_27, 2, 2, 1, 1)
+        self.graphicsView_14 = PlotWidget(self.gridLayoutWidget_17)
+        self.graphicsView_14.setObjectName("graphicsView_14")
+        self.gridLayout_9.addWidget(self.graphicsView_14, 0, 0, 1, 1)
+        self.graphicsView_15 = PlotWidget(self.gridLayoutWidget_17)
+        self.graphicsView_15.setObjectName("graphicsView_15")
+        self.gridLayout_9.addWidget(self.graphicsView_15, 1, 0, 1, 1)
+        self.graphicsView_24 = PlotWidget(self.gridLayoutWidget_17)
+        self.graphicsView_24.setObjectName("graphicsView_24")
+        self.gridLayout_9.addWidget(self.graphicsView_24, 1, 1, 1, 1)
+        self.graphicsView_23 = PlotWidget(self.gridLayoutWidget_17)
+        self.graphicsView_23.setObjectName("graphicsView_23")
+        self.gridLayout_9.addWidget(self.graphicsView_23, 0, 1, 1, 1)
+        self.graphicsView_20 = PlotWidget(self.gridLayoutWidget_17)
+        self.graphicsView_20.setObjectName("graphicsView_20")
+        self.gridLayout_9.addWidget(self.graphicsView_20, 1, 2, 1, 1)
+        self.graphicsView_19 = PlotWidget(self.gridLayoutWidget_17)
+        self.graphicsView_19.setObjectName("graphicsView_19")
+        self.gridLayout_9.addWidget(self.graphicsView_19, 0, 2, 1, 1)
+
+        self.retranslateUi(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        self.pushButton_8.setText(_translate("Dialog", "Mode："))
+        self.radioButton.setText(_translate("Dialog", "Auto Mode"))
+        self.radioButton_2.setText(_translate("Dialog", "Menu Mode"))
+        self.pushButton_43.setText(_translate("Dialog", "StopUpdate"))
+        self.pushButton_48.setText(_translate("Dialog", "StartUpdate"))
+        self.pushButton_49.setText(_translate("Dialog", "ClearUpdate"))
+        self.pushButton_46.setText(_translate("Dialog", "Export Figure"))
+        self.pushButton_47.setText(_translate("Dialog", "ExportData"))
+        self.pushButton_58.setText(_translate("Dialog", "Set Data Density"))
+from pyqtgraph import PlotWidget

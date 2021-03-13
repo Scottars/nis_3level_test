@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1878</width>
+    <height>1011</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_8">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Mode：</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>20</y>
+     <width>89</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Auto Mode</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_2">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>20</y>
+     <width>89</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Menu Mode</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_43">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>10</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>StopUpdate</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_48">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>10</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>StartUpdate</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_49">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>10</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ClearUpdate</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_46">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>10</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Export Figure</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_47">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>10</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ExportData</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox">
+   <property name="geometry">
+    <rect>
+     <x>1060</x>
+     <y>20</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="prefix">
+    <string/>
+   </property>
+   <property name="minimum">
+    <number>0</number>
+   </property>
+   <property name="maximum">
+    <number>1</number>
+   </property>
+   <property name="singleStep">
+    <number>10</number>
+   </property>
+   <property name="value">
+    <number>1</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_58">
+   <property name="geometry">
+    <rect>
+     <x>930</x>
+     <y>10</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Set Data Density</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_17">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>1871</width>
+     <height>951</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_9">
+    <item row="2" column="1">
+     <widget class="PlotWidget" name="graphicsView_26"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="PlotWidget" name="graphicsView_25"/>
+    </item>
+    <item row="2" column="2">
+     <widget class="PlotWidget" name="graphicsView_27"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="PlotWidget" name="graphicsView_14"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="PlotWidget" name="graphicsView_15"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="PlotWidget" name="graphicsView_24"/>
+    </item>
+    <item row="0" column="1">
+     <widget class="PlotWidget" name="graphicsView_23"/>
+    </item>
+    <item row="1" column="2">
+     <widget class="PlotWidget" name="graphicsView_20"/>
+    </item>
+    <item row="0" column="2">
+     <widget class="PlotWidget" name="graphicsView_19"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
